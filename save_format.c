@@ -33,36 +33,51 @@ int	is_dot(t_printf *tab, const char *str, int i)
 int	is_space(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == ' ')
+	{
 		tab->space = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_sign(t_printf *tab, const char *str, int i)
 {
-	if (str[i] == '-' || str[i] == '+')
+	if (str[i] == '+')
+	{
 		tab->percent = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_hash(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == '#')
-		tab->dash = 1;
-	return (i + 1);
+	{
+		tab->hash = 1;
+		i++;
+	}
+	return (i);
 }
 
 int	is_percent(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == '%')
-		tab->percent = 1;
-	return (i + 1);
+	{
+		tab->space = 1;
+		i++;
+	}
+	return (i);
 }
 
 int	is_zero(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == '0')
+	{
 		tab->zero = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_l(t_printf *tab, const char *str, int i)
@@ -73,15 +88,21 @@ int	is_l(t_printf *tab, const char *str, int i)
 		return (i + 2);
 	}
 	else if(str[i] == 'l')
+	{
 		tab->l = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_L(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == 'L')
+	{
 		tab->L = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_h(t_printf *tab, const char *str, int i)
@@ -91,45 +112,45 @@ int	is_h(t_printf *tab, const char *str, int i)
 		tab->hh = 1;
 		return (i + 2);
 	}
-	else if(str[i] == 'h')
+	else if (str[i] == 'h')
+	{
 		tab->h = 1;
-	return (i + 1);
+		i++;
+	}
+	return (i);
 }
 
 int	is_dash(t_printf *tab, const char *str, int i) // NEEDS UPDATE TO ACTUAL WIDTH
 {
-	if (ft_isdigit(str[i]))
-		tab->width = 1;
-	return (i + 1);
+	if (str[i] == '-')
+	{
+		tab->dash = 1;
+		i++;
+	}
+	return (i);
 }
 
 
 int	is_width(t_printf *tab, const char *str, int i)
 {
 	int		j;
+	int		ret;
 	char	*numb;
 
-	j = 0;
-	while (ft_isdigit(str[i]))
+	if (ft_isdigit(str[i]))
 	{
-		j++;
-		i++;
+		j = 0;
+		while (ft_isdigit(str[i]))
+		{
+			j++;
+			i++;
+		}
+		ret =i;
+		numb = ft_strnew(j);
+		ft_strncpy(numb, &str[i - j], j);
+		tab->width = ft_atoi(numb);
+		free (numb);
 	}
-	numb = ft_strnew(j);
-	while (j)
-	{
-		i--;
-		numb[j] = str[i];
-		j--;
-	}
-	tab->width = ft_atoi(numb);
-	free (numb);
-	return (i);
+	return (ret);
 }
 
-int	is_percent(t_printf *tab, const char *str, int i) // NEEDS UPDATE TO ACTUAL WIDTH
-{
-	if (ft_isdigit(str[i]))
-		tab->width = 1;
-	return (i + 1);
-}

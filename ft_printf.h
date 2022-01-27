@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/01/24 15:26:55 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/01/27 13:26:36 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@
 typedef struct s_printf
 {
 	va_list	args;
+	int		b_written;
 	int		width;
 	int		preci;
 	int		dash;
-	int		ret;
 	int		sign;
 	int		zero;
 	int		percent;
@@ -54,5 +54,10 @@ int	is_l(t_printf *tab, const char *str, int i);
 int	is_h(t_printf *tab, const char *str, int i);
 int	is_L(t_printf *tab, const char *str, int i);
 int	is_width(t_printf *tab, const char *str, int i);
+int	print_format(t_printf *tab, char f);
+void	right_align(t_printf *tab, int len);
+void	left_align(t_printf *tab, int len);
+void print_char(t_printf *tab);
+
 
 #endif

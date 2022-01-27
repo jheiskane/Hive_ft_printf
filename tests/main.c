@@ -21,6 +21,26 @@ int main()
 	float b;
 
 
-	a = 20000;
-	ft_printf("%d", a);
+	a = 42;
+
+	// /* Plain char with extra %*/
+	// printf("ft_printf: \n");
+	// ft_printf("123456789%%c", a);
+	// printf("\nReal printf: \n");
+	// printf("123456789%%c", a);
+	// printf("\n\nend\n\n");
+
+	// /* Plain char + alignments */
+	// printf("ft_printf: \n");
+	// ft_printf("0123456789%10c aligned?", a);
+	// printf("\nReal printf: \n");
+	// printf("0123456789%10c aligned?", a);
+	// printf("\nend\n");
+
+	/* Plain char + left alignments */
+	printf("ft_printf: \n");
+	ft_printf("0123456789%-10c aligned?", a);
+	printf("\nReal printf: \n");
+	printf("0123456789%-10c aligned?", a);
+	printf("\nend\n");
 }

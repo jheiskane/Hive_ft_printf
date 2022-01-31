@@ -11,6 +11,10 @@
 
 int main()
 {
+	int a;
+
+	a = 13;
+
 	printf("The * functionality %*d", 1, 2); // prints 2. * asks for the next one
 
 
@@ -24,12 +28,16 @@ int main()
 
 
 	printf("\nWidth:%10.2f", 30.300);			   // "10" Here means that there is at minimum 10 spaces used. So if you print just "1" it would print "         1".
-	printf("\n%2$*1$d", 3, 1); 					   // Prints "  1"
+	printf("%2$*1$d\n", 3, 1); 					   // Prints "  1"
 
 
 	/* Flags */
 
-	printf("\n%#x", -10); 					   // #is alternative form so the input is converted to alternative form. for example here decimal 10 is converted to hexadecimal aka. "0xa"
-	printf("\n%######x", 10);					// Note that multiple flags dont affect the print out. Still prints "0xa"
-	printf("\n%#x", 10);
+	printf("%#x\n", -10); 					   // #is alternative form so the input is converted to alternative form. for example here decimal 10 is converted to hexadecimal aka. "0xa"
+	printf("%######x\n", 10);					// Note that multiple flags dont affect the print out. Still prints "0xa"
+	printf("%#x\n", 10);
+
+	/* Pointer */
+
+	printf("Address of a variable a is: %p\n", (void*)&a);
 }

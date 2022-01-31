@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/01/27 13:26:36 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/01/31 15:12:48 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,9 @@ int	print_format(t_printf *tab, char f);
 void	right_align(t_printf *tab, int len);
 void	left_align(t_printf *tab, int len);
 void print_char(t_printf *tab);
-
+void print_s(t_printf *tab);
+void print_di(t_printf *tab);
+char	*ft_itoa_base(size_t nb, int base);
+void print_p(t_printf *tab);
 
 #endif

@@ -17,7 +17,7 @@ void	ini_struct(t_printf *tab)
 	tab->L = 0;
 	tab->ll = 0;
 	tab->h = 0;
-	tab->conversions = "udcsfupxX%"; //allocate and free?
+	tab->conversions = "udcsfuipxX%"; //allocate and free?
 
 }
 

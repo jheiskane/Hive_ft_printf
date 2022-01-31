@@ -145,12 +145,13 @@ int	is_width(t_printf *tab, const char *str, int i)
 			j++;
 			i++;
 		}
-		ret =i;
+		ret = i;
 		numb = ft_strnew(j);
 		ft_strncpy(numb, &str[i - j], j);
 		tab->width = ft_atoi(numb);
 		free (numb);
+		return (ret);
 	}
-	return (ret);
+	return (i);
 }
 

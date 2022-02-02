@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdarg.h>
-#include "../ft_printf.h"
+#include "ft_printf.h"
 
 // void v_printf(int count, ...)
 // {
@@ -18,13 +18,14 @@
 int main()
 {
 	int	a;
-	float b;
+	//float b;
 	char c;
+	long long int l;
 
 
-	a = 42;
+	a = 136;
 	c = '*';
-
+	l = 1330000033333330033;
 	// /* Plain char with extra %*/
 	// printf("\nPlain char with extra %%\n");
 	// printf("ft_printf: \n");
@@ -57,51 +58,134 @@ int main()
 	// printf("123456789%s", "Okaydokay");
 
 
-	// /* Plain pointer */
+	/* Plain pointer */
 	// printf("\nPlain pointer\n");
 	// printf("ft_printf: \n");
-	// ft_printf("%p\n", a);
+	// //ft_printf("%v\n", a);
 	// printf("\nReal printf: \n");
-	// printf("%lld\n", a);
+	// printf("%v\n", a);
 
 
-	// 	/* Length modifiers */
-	printf("\nll modifier\n");
+ 	/* Length modifiers */
+	// printf("\nhh modifier\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%hhd\n", c);
+	// printf("\nReal printf: \n");
+	// printf("%hhd\n", c);
+
+	// printf("\nll modifier\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%lld\n", l);
+	// printf("\nReal printf: \n");
+	// printf("%lld\n", l);
+
+
+	// printf("\nh modifier\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%hd%hd", (short int)0, (short int)42);
+	// printf("\nReal printf: \n");
+	// printf("%hd%hd", (short int)0, (short int)42);
+
+	// printf("\nh negative SHORT MIN modifier\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%hd%hd", (short int)-32768, (short int)42);
+	// printf("\nReal printf: \n");
+	// printf("%hd%hd", (short int)-32768, (short int)42);
+
+
+	// printf("\nPlain int\n");
+	// printf("ft_printf:\n");
+	// ft_printf("%lli", a);
+	// //ft_printf("%llp\n", a);
+	// printf("\nReal printf: \n");
+	// printf("%lli\n", a);
+
+
+
+	// /* Plain int */
+	// printf("\nPlain int\n");
+	// printf("ft_printf:\n");
+	// ft_printf("%lli", a);
+	// //ft_printf("%llp\n", a);
+	// printf("\nReal printf: \n");
+	// printf("%lli\n", a);
+
+	// /* Width without conversion */
+	// printf("\nWidth without conversion\n");
+	// printf("ft_printf:\n");
+	// printf("return value = %d", ft_printf("%5%"));
+	// printf("\nReal printf: \n");
+	// printf("return value = %d", printf("%5%"));
+
+
+
+	// /* Width without conversion */
+	// printf("\nWidth without conversion\n");
+	// printf("ft_printf:\n");
+	// printf("return value = %d", ft_printf("%5%"));
+	// printf("\nReal printf: \n");
+	// printf("return value = %d", printf("%5%"));
+
+
+
+	/* Plain X x */
+	a = 13;
+	printf("\nPlain X\n");
 	printf("ft_printf: \n");
-	ft_printf("%lld\n", a);
+	ft_printf("%X\n", a);
 	printf("\nReal printf: \n");
-	printf("%lld\n", a);
+	printf("%X\n", a);
 
-	printf("\nPlain int\n");
-	printf("ft_printf:\n");
-	ft_printf("%lli", a);
-	//ft_printf("%llp\n", a);
+	printf("\nPlain X\n");
+	printf("ft_printf: \n");
+	ft_printf("%x\n", a);
 	printf("\nReal printf: \n");
-	printf("%lli\n", a);
+	printf("%x\n", a);
+	a = 42;
 
-
-
-	/* Plain int */
-	printf("\nPlain int\n");
-	printf("ft_printf:\n");
-	ft_printf("%lli", a);
-	//ft_printf("%llp\n", a);
+	/* Plain o */
+	printf("\nPlain o\n");
+	printf("ft_printf: \n");
+	ft_printf("%o\n", 9);
 	printf("\nReal printf: \n");
-	printf("%lli\n", a);
+	printf("%o\n", 9);
+
+	/* Plain u */
+	printf("\nPlain u\n");
+	printf("ft_printf: \n");
+	ft_printf("%u\n", -1);
+	printf("\nReal printf: \n");
+	printf("%u\n", -1);
 
 
+	/* Plain f */
+	double f;
 
+	// f = 123.123;
+	// printf("\nPlain f\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%.1f\n", f);
+	// printf("\nReal printf: \n");
+	// printf("%.1f\n", f);
 
+	f = 123.123467890;
+	printf("\nPlain f\n");
+	printf("ft_printf: \n");
+	ft_printf("%.10f\n", f);
+	printf("\nReal printf: \n");
+	printf("%.10f\n", f);
 
+	printf("\nPlain f\n");
+	printf("ft_printf: \n");
+	ft_printf("%.20f\n", f);
+	printf("\nReal printf: \n");
+	printf("%.20f\n", f);
 
-
-
-
-
-
-
-
-
+	printf("\nPlain f\n");
+	printf("ft_printf: \n");
+	ft_printf("%.10f\n", f);
+	printf("\nReal printf: \n");
+	printf("%.10f\n", f);
 
 
 

@@ -12,18 +12,18 @@
 int main()
 {
 	int a;
+	double d;
 
 	a = 13;
+	d = 1234.123;
 
 	printf("The * functionality %*d", 1, 2); // prints 2. * asks for the next one
 
 
 	/*Precision   */
 	printf("\nPrecision\n");
-	printf("\nPrints 3 decimal places from 12.1355555 -> %.3f", 12.1355555); // Prints 2 decimal places only and rounds to closest and even
-	printf("\nPrecision with integer \n");
+	printf("\nPrints 3 decimal places from 12.1355555 -> %f", d); // Default precision is 6 decimals. Seventh is rounded
 	printf("\nPrints 3 precision places from 1209 -> %.5d", 1209);
-
 
 
 

@@ -23,7 +23,7 @@ int main()
 	/*Precision   */
 	printf("\nPrecision\n");
 	printf("\nPrints 3 decimal places from 12.1355555 -> %f", d); // Default precision is 6 decimals. Seventh is rounded
-	printf("\nPrints 3 precision places from 1209 -> %.5d", 1209);
+	printf("\nPrints 3 precision places from 1209 -> %.2f", 1209.99966);
 
 
 

@@ -1,6 +1,21 @@
 #include "ft_printf.h"
 
-char	*save_to_str(double nb, int preci)
+double	round_nb(double nb, int preci)
+{
+	double	round;
+	int 	x;
+
+	round = 0.5;
+	x = 0;
+	while (x < preci)
+	{
+		round /= 10;
+		x++;
+	}
+	return (nb + round);
+}
+
+char	*save_to_str(double a_com, int preci)
 {
 	char			*new;
 	int				x;
@@ -12,12 +27,13 @@ char	*save_to_str(double nb, int preci)
 	new = ft_strnew(preci);
 	if (!new)
 		return (NULL);
-	while (x < preci)
+	new[x++] = '.';
+	while (x <= preci)
 	{
-		tmp = nb * 10;
+		tmp = a_com * 10;
 		digit = tmp;
 		new[x++] = digit + '0';
-		nb = tmp - digit;
+		a_com = tmp - digit;
 	}
 	return (new);
 }
@@ -34,11 +50,8 @@ char	*ft_itoa_float(t_printf *tab, double nb)
 		return (new);
 	if (tab->preci == 0)
 		tab->preci = 6;
+	nb = round_nb(nb, tab->preci);
 	a_com = nb - b_com;
-	if (a_com)
-	{
-		// NEEDS ROUNDING IMPLEMENTED
-		new = ft_strjoin(new, save_to_str(a_com, tab->preci));
-	}
+	new = ft_strjoin(new, save_to_str(a_com, tab->preci));
 	return (new);
 }

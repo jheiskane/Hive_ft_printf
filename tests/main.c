@@ -128,34 +128,34 @@ int main()
 
 
 
-	/* Plain X x */
-	a = 13;
-	printf("\nPlain X\n");
-	printf("ft_printf: \n");
-	ft_printf("%X\n", a);
-	printf("\nReal printf: \n");
-	printf("%X\n", a);
+	// /* Plain X x */
+	// a = 13;
+	// printf("\nPlain X\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%X\n", a);
+	// printf("\nReal printf: \n");
+	// printf("%X\n", a);
 
-	printf("\nPlain X\n");
-	printf("ft_printf: \n");
-	ft_printf("%x\n", a);
-	printf("\nReal printf: \n");
-	printf("%x\n", a);
-	a = 42;
+	// printf("\nPlain X\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%x\n", a);
+	// printf("\nReal printf: \n");
+	// printf("%x\n", a);
+	// a = 42;
 
-	/* Plain o */
-	printf("\nPlain o\n");
-	printf("ft_printf: \n");
-	ft_printf("%o\n", 9);
-	printf("\nReal printf: \n");
-	printf("%o\n", 9);
+	// /* Plain o */
+	// printf("\nPlain o\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%o\n", 9);
+	// printf("\nReal printf: \n");
+	// printf("%o\n", 9);
 
-	/* Plain u */
-	printf("\nPlain u\n");
-	printf("ft_printf: \n");
-	ft_printf("%u\n", -1);
-	printf("\nReal printf: \n");
-	printf("%u\n", -1);
+	// /* Plain u */
+	// printf("\nPlain u\n");
+	// printf("ft_printf: \n");
+	// ft_printf("%u\n", -1);
+	// printf("\nReal printf: \n");
+	// printf("%u\n", -1);
 
 
 	/* Plain f */
@@ -168,22 +168,30 @@ int main()
 	// printf("\nReal printf: \n");
 	// printf("%.1f\n", f);
 
-	f = 123.123467890;
+	f = 1235557891011.0;
+
+	printf("\nPlain f\n");
+	printf("ft_printf: \n");
+	ft_printf("%.1f\n", f);
+	printf("\nReal printf: \n");
+	printf("%.1f\n", f);
+
+	printf("\nPlain f\n");
+	printf("ft_printf: \n");
+	ft_printf("%.15f\n", f);
+	printf("\nReal printf: \n");
+	printf("%.15f\n", f);
+
 	printf("\nPlain f\n");
 	printf("ft_printf: \n");
 	ft_printf("%.10f\n", f);
 	printf("\nReal printf: \n");
 	printf("%.10f\n", f);
 
-	printf("\nPlain f\n");
-	printf("ft_printf: \n");
-	ft_printf("%.20f\n", f);
-	printf("\nReal printf: \n");
-	printf("%.20f\n", f);
 
 	printf("\nPlain f\n");
 	printf("ft_printf: \n");
-	ft_printf("%.10f\n", f);
+	ft_printf("%.10f, %d, %c, %s\n", f, 123456789, 42, "Hello World!");
 	printf("\nReal printf: \n");
 	printf("%.10f\n", f);
 

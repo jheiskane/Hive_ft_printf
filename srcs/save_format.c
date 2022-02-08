@@ -133,23 +133,18 @@ int	is_dash(t_printf *tab, const char *str, int i)
 int	is_width(t_printf *tab, const char *str, int i)
 {
 	int		j;
-	int		ret;
 	char	*numb;
 
 	if (ft_isdigit(str[i]))
 	{
 		j = 0;
-		while (ft_isdigit(str[i]))
-		{
+		while (ft_isdigit(str[i + j]))
 			j++;
-			i++;
-		}
-		ret = i;
 		numb = ft_strnew(j);
-		ft_strncpy(numb, &str[i - j], j);
+		ft_strncpy(numb, &str[i], j);
 		tab->width = ft_atoi(numb);
 		free (numb);
-		return (ret);
+		return (i + j);
 	}
 	return (i);
 }

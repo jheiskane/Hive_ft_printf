@@ -25,9 +25,11 @@ int	save_format(t_printf *tab, const char *str, int i)
 {
 	int	error;
 
-	while (!ft_strchr(tab->conversions, str[i])) // Is this always done just once?
+	is_percent(tab, str, i);
+	while (!ft_strchr(tab->conversions, str[i]) && str[i]) // Is this always done just once?
 	{
 		error = i; // Does the order of these matter here?
+		i = is_zero(tab, str, i);
 		i = is_dot(tab, str, i); // sets precision as well
 		i = is_sign(tab, str, i);
 		i = is_hash(tab, str, i);
@@ -36,17 +38,13 @@ int	save_format(t_printf *tab, const char *str, int i)
 		i = is_width(tab, str, i);
 		i = is_h(tab, str, i);
 		i = is_l(tab, str, i);
-		i = is_width(tab, str, i);
 		i = is_L(tab, str, i);
-		i = is_percent(tab, str, i);
 		if (error == i)
 		{
 			tab->error = 1; // nothing is done with this yet
 			break;
 		}
 	}
-	if (!str[i]) // to print out the %
-		i--;
 	// Error checking here? If none of the parameters found and conversion not found exit()?
 	return (i);
 }

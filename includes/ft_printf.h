@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/02/02 16:37:04 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/08 13:24:18 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,8 @@ typedef struct s_printf
 	char 	*conversions;
 }			t_printf;
 
+unsigned int	special_cases_uox(t_printf *tab);
+void	fill_preci_diouxX(t_printf *tab);
 char	*ft_itoa_double(double nb, int preci);
 double	special_cases_f(t_printf *tab);
 void print_f(t_printf *tab);
@@ -63,8 +65,7 @@ int	is_h(t_printf *tab, const char *str, int i);
 int	is_L(t_printf *tab, const char *str, int i);
 int	is_width(t_printf *tab, const char *str, int i);
 int	print_format(t_printf *tab, char f);
-void	right_align(t_printf *tab, int len);
-void	left_align(t_printf *tab, int len);
+void	align(t_printf *tab, int len, char c);
 void print_char(t_printf *tab);
 void print_s(t_printf *tab);
 void print_di(t_printf *tab);

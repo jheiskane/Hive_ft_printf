@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/01 13:53:28 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/04 13:12:30 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ char	*ft_itoa_base(long long int nb, int base)
 	char			*new;
 	long long int	i;
 	int				x;
-	int				rem;
+	long long int	rem;
 	int				neg;
 
 	neg = 0;

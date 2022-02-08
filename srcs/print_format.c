@@ -1,20 +1,35 @@
 #include "ft_printf.h"
 
+void	align(t_printf *tab, int len, char c)
+{
+	int	i;
+
+	i = 0;
+	if (tab->zero)
+		c = '0';
+	while(len > i)
+	{
+		write(1, &c, 1);
+		i++;
+	}
+	tab->b_written += len; //len - 1 deleted
+}
+
 void	print_percent(t_printf *tab)
 {
 	//special_cases(tab, 1);
 	if (tab->width && !tab->dash)
-		right_align(tab, 1);
+		align(tab, tab->preci, ' ');
 	tab->b_written += write(1, "%", 1);
 	if (tab->width && tab->dash)
-		left_align(tab, 1);
+		align(tab, tab->preci, ' ');
 }
 
 int	print_format(t_printf *tab, char f)
 {
 	if (f == 'c')
 		print_char(tab);
-	if (f == '%')
+	if (f == '%' && tab->percent)
 		print_percent(tab);
 	if (f == 'd' || f == 'i')
 		print_di(tab);
@@ -38,3 +53,4 @@ int	print_format(t_printf *tab, char f)
 	}
 	return (tab->b_written);
 }
+

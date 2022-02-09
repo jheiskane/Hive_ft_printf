@@ -26,9 +26,11 @@ int	save_format(t_printf *tab, const char *str, int i)
 	int	error;
 
 	is_percent(tab, str, i);
-	while (!ft_strchr(tab->conversions, str[i]) && str[i]) // Is this always done just once?
+	while (!ft_strchr(tab->conversions, str[i]) && str[i])
 	{
-		error = i; // Does the order of these matter here?
+		error = i;
+		i = is_percent(tab, str, i);
+		i = is_space(tab, str, i);
 		i = is_zero(tab, str, i);
 		i = is_dot(tab, str, i); // sets precision as well
 		i = is_sign(tab, str, i);

@@ -135,6 +135,8 @@ int	is_width(t_printf *tab, const char *str, int i)
 	int		j;
 	char	*numb;
 
+	if (str[i] == '0') // to not get mixed up with 0 flag
+		return (i);
 	if (ft_isdigit(str[i]))
 	{
 		j = 0;

@@ -22,15 +22,15 @@ double	special_cases_f(t_printf *tab)
 	return (va_arg(tab->args, double));
 }
 
-unsigned int	special_cases_uox(t_printf *tab)
+size_t	special_cases_uox(t_printf *tab)
 {
 	if (tab->hh)
-		return ((unsigned char)va_arg(tab->args, int));
+		return ((unsigned char)va_arg(tab->args, size_t));
 	else if (tab->ll)
-		return ((unsigned long long int)va_arg(tab->args, unsigned long long int));
+		return ((long long unsigned int)(va_arg(tab->args, size_t)));
 	else if (tab->l)
-		return ((unsigned long int)va_arg(tab->args, unsigned long int));
+		return ((long unsigned int)(va_arg(tab->args, size_t)));
 	else if (tab->h)
-		return ((unsigned short int)va_arg(tab->args, int));
-	return (va_arg(tab->args, unsigned int));
+		return ((unsigned short int)va_arg(tab->args, size_t));
+	return ((unsigned int)va_arg(tab->args, size_t));
 }

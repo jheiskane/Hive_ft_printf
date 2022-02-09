@@ -1,5 +1,21 @@
 #include "ft_printf.h"
 
+char	*conv_hash(t_printf *tab, char *str, char f)
+{
+	char *tmp;
+
+	tmp = str;
+	if (tab->hash && *str != '0')
+	{
+		if (f == 'X')
+			str = ft_strjoin("0x", str);
+		else if (f == 'x')
+			str = ft_strjoin("0x", str);
+		free (tmp);
+	}
+	return (str);
+}
+
 void	align(t_printf *tab, int len, char c)
 {
 	int	i;
@@ -18,18 +34,19 @@ void	align(t_printf *tab, int len, char c)
 void	print_percent(t_printf *tab)
 {
 	//special_cases(tab, 1);
-	if (tab->width && !tab->dash)
-		align(tab, tab->preci, ' ');
+	tab->width -= 1;
+	if (tab->width > 0 && !tab->dash)
+		align(tab, tab->width, ' ');
 	tab->b_written += write(1, "%", 1);
-	if (tab->width && tab->dash)
-		align(tab, tab->preci, ' ');
+	if (tab->width > 0 && tab->dash)
+		align(tab, tab->width, ' ');
 }
 
 int	print_format(t_printf *tab, char f)
 {
 	if (f == 'c')
 		print_char(tab);
-	if (f == '%' && tab->percent)
+	if (f == '%')
 		print_percent(tab);
 	if (f == 'd' || f == 'i')
 		print_di(tab);
@@ -41,16 +58,10 @@ int	print_format(t_printf *tab, char f)
 		print_u(tab);
 	if (f == 'f')
 		print_f(tab);
-	if (f == 'x' || f == 'X' || f == 'o')
-	{
-		int	base;
-
-		if (f == 'o')
-			base = 8;
-		else
-			base = 16;
-		print_xXo(tab, f, base);
-	}
+	if (f == 'x' || f == 'X')
+		print_xX(tab, f, 16);
+	if (f == 'o')
+		print_o(tab, 8);
 	return (tab->b_written);
 }
 

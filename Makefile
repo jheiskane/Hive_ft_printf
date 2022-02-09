@@ -6,12 +6,12 @@
 #    By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 09:59:08 by smarvin           #+#    #+#              #
-#    Updated: 2022/02/08 11:02:12 by jheiskan         ###   ########.fr        #
+#    Updated: 2022/02/09 15:01:32 by jheiskan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
-FLAGS = -g -Wall -Wextra -Werror
+FLAGS = -g
 
 SRCS =	ft_atoi.c\
 		ft_isdigit.c\

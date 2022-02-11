@@ -1,24 +1,24 @@
 #include "ft_printf.h"
 
-size_t	special_cases_di(t_printf *tab)
+ssize_t	special_cases_di(t_printf *tab)
 {
 	if (tab->hh)
-		return ((signed char)va_arg(tab->args, size_t));
+		return ((signed char)va_arg(tab->args, ssize_t));
 	else if (tab->ll)
-		return ((long long int)va_arg(tab->args, long long int));
+		return ((long long int)va_arg(tab->args, ssize_t));
 	else if (tab->l)
-		return ((long int)va_arg(tab->args, size_t));
+		return ((long int)va_arg(tab->args, ssize_t));
 	else if (tab->h)
-		return ((short int)va_arg(tab->args, size_t));
+		return ((short int)va_arg(tab->args, ssize_t));
 	return (va_arg(tab->args, int));
 }
 
-double	special_cases_f(t_printf *tab)
+long double	special_cases_f(t_printf *tab)
 {
-	if (tab->l)
-		return ((long double)va_arg(tab->args, double));
-	else if (tab->L)
-		return ((long double)va_arg(tab->args, double));
+	if (tab->L)
+		return ((long double)va_arg(tab->args, long double));
+	else if (tab->l)
+		return ((double)va_arg(tab->args, double));
 	return (va_arg(tab->args, double));
 }
 

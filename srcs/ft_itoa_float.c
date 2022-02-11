@@ -1,11 +1,13 @@
 #include "ft_printf.h"
 
-double	round_nb(double nb, int preci)
+long double	round_nb(long double nb, int preci)
 {
-	double	round;
+	long double	round;
 	int 	x;
 
 	round = 0.5;
+	if (nb < 0)
+		round = -0.5;
 	x = 0;
 	while (x < preci)
 	{
@@ -15,12 +17,12 @@ double	round_nb(double nb, int preci)
 	return (nb + round);
 }
 
-char	*save_to_str(double a_com, int preci)
+char	*save_to_str(long double a_com, int preci)
 {
 	char			*new;
 	int				x;
 	int				digit;
-	double			tmp;
+	long double			tmp;
 
 	x = 0;
 
@@ -38,11 +40,11 @@ char	*save_to_str(double a_com, int preci)
 	return (new);
 }
 
-char	*ft_itoa_float(t_printf *tab, double nb)
+char	*ft_itoa_float(t_printf *tab, long double nb)
 {
-	double			a_com;
-	long long int	b_com;
-	char			*new;
+	long double				a_com;
+	long long int			b_com;
+	char					*new;
 
 	b_com = nb;
 	new = ft_itoa_base(b_com, 10);
@@ -51,7 +53,7 @@ char	*ft_itoa_float(t_printf *tab, double nb)
 	if (tab->preci == 0)
 		tab->preci = 6;
 	nb = round_nb(nb, tab->preci);
-	a_com = nb - b_com;
+	a_com = ft_abs(nb) - ft_abs(b_com);
 	new = ft_strjoin(new, save_to_str(a_com, tab->preci));
 	return (new);
 }

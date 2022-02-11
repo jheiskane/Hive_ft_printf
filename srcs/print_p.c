@@ -5,16 +5,27 @@ void print_p(t_printf *tab)
 	unsigned long	p;
 	char			*s;
 
-	p = va_arg(tab->args, unsigned long);
+	p = (unsigned long)va_arg(tab->args, size_t);
 	s = ft_itoa_base(p, 16);
-	tab->width -= ft_strlen(s);
-	//special_cases(tab, 1);
+	if (tab->dot && tab->preci == 0 && !p)
+	{
+		tab->b_written += write(1, "0x", 2);
+	 	return ;
+	}
+	tab->width -= ft_strlen(s) + 2;
+	tab->preci -= ft_strlen(s);
+	if (tab->preci > 0)
+		tab->width -= tab->preci;
 	if (tab->width > 0 && !tab->dash)
-		align(tab, tab->preci, ' ');
-	write(1, "0x", 2);
+		align(tab, tab->width, ' ');
+	tab->b_written += write(1, "0x", 2);
+	if (tab->preci > 0)
+		align(tab, tab->preci, '0');
+	if (*s == '-')
+		++(*s);
 	while (*s)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
-		align(tab, tab->preci, ' ');
+		align(tab, tab->width, ' ');
 	va_end(tab->args);
 }

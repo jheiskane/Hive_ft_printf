@@ -1,48 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_base.c                                     :+:      :+:    :+:   */
+/*   ft_itoa_ull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/10 12:25:03 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/10 12:48:37 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long long int	check_min(long long int nb, char *min)
+char	*ft_itoa_ull(unsigned long long int nb, int base)
 {
-	if (nb < -9223372036854775807)
-	{
-		nb /= 10;
-		*min = 'M';
-	}
-	return (nb);
-}
+	char					*new;
+	int						x;
+	unsigned long long int	rem;
 
-
-char	*ft_itoa_base(long long int nb, int base)
-{
-	char			*new;
-	char			min;
-	int				x;
-	long long int	rem;
-	int				neg;
-
-	neg = 0;
 	x = 0;
-	min = '0';
 	if (nb == 0)
 		return ("0");
-	if (nb < 0 && base == 10)
-	{
-		neg = 1;
-		nb = check_min(nb, &min);
-		nb *= -1;
-		x++;
-	}
 	rem = nb;
 	while (rem > 0)
 	{
@@ -52,9 +30,7 @@ char	*ft_itoa_base(long long int nb, int base)
 	new = ft_strnew(x);
 	if (!new)
 		return (NULL);
-	if (neg == 1)
-		new[0] = '-';
-	while (x > neg)
+	while (x > 0)
 	{
 		rem = 0;
 		rem = nb % base;
@@ -64,7 +40,5 @@ char	*ft_itoa_base(long long int nb, int base)
 			new[--x] = rem + '0';
 		nb /= base;
 	}
-	if (min == 'M')
-		new[19] = '8';
 	return (new);
 }

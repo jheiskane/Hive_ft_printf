@@ -6,6 +6,7 @@ void	ini_struct(t_printf *tab)
 
 	tab->b_written = 0;
 	tab->dash = 0;
+	tab->hash = 0;
 	tab->percent = 0;
 	tab->dot = 0;
 	tab->preci = 0;
@@ -26,7 +27,7 @@ int	save_format(t_printf *tab, const char *str, int i)
 	int	error;
 
 	is_percent(tab, str, i);
-	while (!ft_strchr(tab->conversions, str[i]) && str[i])
+	while (str[i] && !ft_strchr(tab->conversions, str[i]))
 	{
 		error = i;
 		i = is_percent(tab, str, i);
@@ -74,7 +75,8 @@ int	ft_printf(const char *str_format, ...)
 		}
 		else
 			ret += write(1, &str_format[i], 1);
-		i++;
+		if (str_format[i])
+			i++;
 	}
 	va_end(tab->args);
 	free (tab);

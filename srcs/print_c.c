@@ -11,6 +11,6 @@ void print_char(t_printf *tab)
 		align(tab, tab->width, ' ');
 	tab->b_written += write(1, &a, 1);
 	if (tab->width > 0 && tab->dash)
-		align(tab, tab->preci, ' ');
+		align(tab, tab->width, ' ');
 	va_end(tab->args);
 }

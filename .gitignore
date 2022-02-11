@@ -1,2 +1,3 @@
 tests/printf_*
 tests/printf.dS*
+tests/printf.dSYM/Contents/Resources/DWARF/printf

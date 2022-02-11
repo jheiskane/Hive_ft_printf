@@ -17,7 +17,7 @@ int main()
 	a = 13;
 	d = 1234.123;
 
-	printf("The * functionality %*d", 1, 2); // prints 2. * asks for the next one
+	printf("The * functionality %#.6o", 1); // prints 2. * asks for the next one
 
 
 	/*Precision   */

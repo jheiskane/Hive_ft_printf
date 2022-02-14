@@ -1,12 +1,25 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_diouxX.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 18:28:50 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 18:52:40 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void	print_oXx_s(t_printf *tab, char f)
+void	print_ox_s(t_printf *tab, char f)
 {
 	if (f == 'x')
 		tab->b_written += write(1, "0x", 2);
 	else if (f == 'X')
 		tab->b_written += write(1, "0X", 2);
 }
+
 int	ft_strlen_di(const char *str)
 {
 	int	i;
@@ -23,7 +36,7 @@ int	ft_strlen_di(const char *str)
 	return (i + neg);
 }
 
-void print_di(t_printf *tab)
+void	print_di(t_printf *tab)
 {
 	char	*s;
 	char	*tmp;
@@ -31,8 +44,9 @@ void print_di(t_printf *tab)
 	s = ft_itoa_base(special_cases_di(tab), 10);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
-		tab->p_nothi = 1;
-	tab->width -= ft_strlen(s) + ((tab->sign && *s != '-') || tab->space) - tab->p_nothi;
+		tab->p_not = 1;
+	tab->width -= ft_strlen(s) + ((tab->sign && *s != '-') \
+	|| tab->space) - tab->p_not;
 	tab->preci -= ft_strlen_di(s);
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
@@ -44,16 +58,15 @@ void print_di(t_printf *tab)
 		tab->b_written += write(1, " ", 1);
 	if (tab->preci > 0)
 		s = align_di(tab, tab->preci, '0', s);
-	while (*s && !tab->p_nothi)
+	while (*s && !tab->p_not)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		s = align_di(tab, tab->width, ' ', s);
 	if (*tmp && *tmp != '0')
 		free (tmp);
-	va_end(tab->args);
 }
 
-void print_o(t_printf *tab, int base)
+void	print_o(t_printf *tab, int base)
 {
 	char	*s;
 	char	*tmp;
@@ -64,11 +77,11 @@ void print_o(t_printf *tab, int base)
 		s = ft_itoa_base(special_cases_uox(tab), base);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot && !tab->hash)
-		tab->p_nothi = 1;
+		tab->p_not = 1;
 	tab->preci -= ft_strlen(s);
-	tab->width -= ft_strlen(s) - tab->p_nothi;
+	tab->width -= ft_strlen(s) - tab->p_not;
 	if (tab->hash && tab->preci < 1 && *s != '0')
-		tab->preci = 1; // Adding the 0 for the hash flag
+		tab->preci = 1;
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
 	if (tab->width > 0 && !tab->dash)
@@ -80,16 +93,15 @@ void print_o(t_printf *tab, int base)
 	}
 	if (tab->preci > 0)
 		align_di(tab, tab->preci, '0', s);
-	while (*s && !tab->p_nothi)
+	while (*s && !tab->p_not)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		align_di(tab, tab->width, ' ', s);
 	if (*tmp && *tmp != '0')
 		free (tmp);
-	va_end(tab->args);
 }
 
-void print_xX(t_printf *tab, char f, int base)
+void	print_xx(t_printf *tab, char f, int base)
 {
 	char	*s;
 	char	*tmp;
@@ -101,9 +113,9 @@ void print_xX(t_printf *tab, char f, int base)
 		s = ft_itoa_base(special_cases_uox(tab), base);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
-		tab->p_nothi = 1;
+		tab->p_not = 1;
 	tab->preci -= ft_strlen(s);
-	tab->width -= ft_strlen(s) - tab->p_nothi; // to add to width in case of error
+	tab->width -= ft_strlen(s) - tab->p_not;
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
 	if (tab->width > 0 && !tab->dash)
@@ -111,10 +123,10 @@ void print_xX(t_printf *tab, char f, int base)
 		if (tab->hash)
 		{
 			if (*s != '0' && tab->zero && !tab->dot)
-				print_oXx_s(tab, f);
+				print_ox_s(tab, f);
 			align_di(tab, tab->width - 2, ' ', s);
 			if (*s != '0' && !tab->zero)
-				print_oXx_s(tab, f);
+				print_ox_s(tab, f);
 		}
 		else
 			align_di(tab, tab->width, ' ', s);
@@ -122,13 +134,13 @@ void print_xX(t_printf *tab, char f, int base)
 	else
 	{
 		if (tab->hash && *s != '0')
-			print_oXx_s(tab, f);
+			print_ox_s(tab, f);
 	}
 	if (tab->preci > 0)
 		align_di(tab, tab->preci, '0', s);
-	while (*s && !tab->p_nothi)
+	while (*s && !tab->p_not)
 	{
-		if (f == 'X' && *s != '0') // 0 is a problem when returned from itoa_base
+		if (f == 'X' && *s != '0')
 			*s = (char)ft_toupper(*s);
 		tab->b_written += write(1, &*s++, 1);
 	}
@@ -136,7 +148,6 @@ void print_xX(t_printf *tab, char f, int base)
 		align_di(tab, tab->width - (2 * tab->hash), ' ', s);
 	if (*tmp && *tmp != '0')
 		free (tmp);
-	va_end(tab->args);
 }
 
 void print_u(t_printf *tab)
@@ -149,7 +160,7 @@ void print_u(t_printf *tab)
 	else
 		s = ft_itoa_base(special_cases_uox(tab), 10);
 	if (!tab->preci && *s == '0' && tab->dot)
-		tab->p_nothi = 1;
+		tab->p_not = 1;
 	tmp = s;
 	tab->width -= ft_strlen(s);
 	tab->preci -= ft_strlen(s);
@@ -161,11 +172,10 @@ void print_u(t_printf *tab)
 		align_di(tab, tab->preci, '0', s);
 	if (*s == '-')
 		++(*s);
-	while (*s && !tab->p_nothi)
+	while (*s && !tab->p_not)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		align_di(tab, tab->width, ' ', s);
 	if (*tmp && *tmp != '0')
 		free (tmp);
-	va_end(tab->args);
 }

@@ -1,22 +1,33 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_s.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 17:32:00 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 19:47:41 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void print_s(t_printf *tab)
+void	print_s(t_printf *tab)
 {
 	int		len;
 	char	*p;
 
-	len = 1;
 	p = va_arg(tab->args, char *);
-	tab->zero = 0;
 	if (!p)
 	{
 		tab->b_written += write(1, "(null)", 6);
 		return ;
 	}
-	if (tab->dot && tab->preci < ft_strlen(p))
+	len = ft_strlen(p);
+	if (tab->dot && tab->preci < len)
 		tab->width -= tab->preci;
 	else
-		tab->width -= ft_strlen(p);
+		tab->width -= len;
 	if (tab->width > 0 && !tab->dash)
 		align(tab, tab->width, ' ');
 	if (tab->preci > 0 || tab->dot)
@@ -24,7 +35,7 @@ void print_s(t_printf *tab)
 	while (*p && len != 0)
 	{
 		if (tab->preci > 0 || tab->dot)
-			len--;
+			len = --tab->preci;
 		tab->b_written += write(1, &*p++, 1);
 	}
 	if (tab->width > 0 && tab->dash)

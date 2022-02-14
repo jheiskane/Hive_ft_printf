@@ -1,9 +1,19 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_printf.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 18:49:54 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 18:51:15 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
-//#include <stdio.h>
 
 void	ini_struct(t_printf *tab)
 {
-
 	tab->b_written = 0;
 	tab->dash = 0;
 	tab->hash = 0;
@@ -19,10 +29,10 @@ void	ini_struct(t_printf *tab)
 	tab->ll = 0;
 	tab->h = 0;
 	tab->error = 0;
-	tab->p_nothi = 0;
-	tab->conversions = "udcsofuipxX%"; //allocate and free?
-
+	tab->p_not = 0;
+	tab->conversions = "udcsofuipxX%";
 }
+
 int	save_format(t_printf *tab, const char *str, int i)
 {
 	int	error;
@@ -31,25 +41,21 @@ int	save_format(t_printf *tab, const char *str, int i)
 	while (str[i] && !ft_strchr(tab->conversions, str[i]))
 	{
 		error = i;
-		i = is_percent(tab, str, i);
+		i = is_hs_zr(tab, str, i);
 		i = is_space(tab, str, i);
-		i = is_zero(tab, str, i);
-		i = is_dot(tab, str, i); // sets precision as well
+		i = is_dot(tab, str, i);
 		i = is_sign(tab, str, i);
-		i = is_hash(tab, str, i);
 		i = is_dash(tab, str, i);
 		i = is_space(tab, str, i);
 		i = is_width(tab, str, i);
 		i = is_h(tab, str, i);
 		i = is_l(tab, str, i);
-		i = is_L(tab, str, i);
 		if (error == i)
 		{
-			tab->error = 1; // nothing is done with this yet
+			tab->error = 1;
 			return (i - 1);
 		}
 	}
-	// Error checking here? If none of the parameters found and conversion not found exit()?
 	return (i);
 }
 
@@ -62,8 +68,6 @@ int	ft_printf(const char *str_format, ...)
 	i = 0;
 	ret = 0;
 	tab = (t_printf *)malloc(sizeof(t_printf));
-	if (!tab)
-		return (0);
 	ini_struct(tab);
 	va_start(tab->args, str_format);
 	while (str_format[i])
@@ -81,5 +85,5 @@ int	ft_printf(const char *str_format, ...)
 	}
 	va_end(tab->args);
 	free (tab);
-	return (ret); // Return the number of bytes printed (write)
+	return (ret);
 }

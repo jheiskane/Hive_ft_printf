@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_itoa_float.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 18:48:50 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 long double	round_nb(long double nb, int preci)
@@ -6,7 +18,7 @@ long double	round_nb(long double nb, int preci)
 	long double	tmp;
 	double		digit;
 	int			d;
-	int 		x;
+	int			x;
 
 	digit = 0;
 	round = 0.5;
@@ -34,10 +46,9 @@ char	*save_to_str(long double a_com, int preci)
 	char			*new;
 	int				x;
 	int				digit;
-	long double			tmp;
+	long double		tmp;
 
 	x = 1;
-
 	new = ft_strnew(preci);
 	while (x <= preci)
 	{
@@ -58,7 +69,6 @@ char	*ft_itoa_float(t_printf *tab, long double nb)
 
 	if (!tab->dot)
 		tab->preci = 6;
-
 	nb = round_nb(nb, tab->preci);
 	b_com = nb;
 	new = ft_itoa_base(b_com, 10);

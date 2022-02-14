@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_format.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 17:13:47 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 18:33:30 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 char	*conv_hash(t_printf *tab, char *str, char f)
 {
-	char *tmp;
+	char	*tmp;
 
 	tmp = str;
 	if (tab->hash && *str != '0')
@@ -16,84 +28,8 @@ char	*conv_hash(t_printf *tab, char *str, char f)
 	return (str);
 }
 
-char	*align_di(t_printf *tab, int len, char c, char *s)
-{
-	int	i;
-
-	i = 0;
-	if ((tab->zero && !tab->dot) || c == '0') // If printing zeros before the number, add '-' before the zeros
-	{
-		if (*s == '-')
-			tab->b_written += write(1, &*s++, 1);
-		else if (tab->sign)
-		{
-			tab->b_written += write(1, "+", 1);
-		}
-		else if (tab->space)
-			tab->b_written += write(1, " ", 1);
-	}
-	if (tab->zero && !tab->dot && !tab->dash)
-		c = '0';
-	while(len > i)
-	{
-		write(1, &c, 1);
-		i++;
-	}
-	if (c == ' ' && *s == '-')
-		tab->b_written += write(1, &*s++, 1);
-	tab->b_written += len;
-	return (s);
-}
-
-char	*align_f(t_printf *tab, int len, char c, char *s)
-{
-	int	i;
-
-	i = 0;
-	if (tab->zero) // If printing zeros before the number, add '-' before the zeros
-	{
-		if (*s == '-')
-			tab->b_written += write(1, &*s++, 1);
-		else if (tab->sign)
-		{
-			tab->b_written += write(1, "+", 1);
-			len--;
-		}
-		else if (tab->space || *s == '0')
-			tab->b_written += write(1, " ", 1);
-	}
-	if (tab->zero && !tab->dash)
-		c = '0';
-	while(len > i)
-	{
-		write(1, &c, 1);
-		i++;
-	}
-	if (!tab->zero && *s == '-')
-		tab->b_written += write(1, &*s++, 1);
-	tab->b_written += len;
-	return (s);
-}
-
-
-void	align(t_printf *tab, int len, char c)
-{
-	int	i;
-
-	i = 0;
-	if (tab->zero)
-		c = '0';
-	while(len > i)
-	{
-		write(1, &c, 1);
-		i++;
-	}
-	tab->b_written += len; //len - 1 deleted
-}
-
 void	print_percent(t_printf *tab)
 {
-	//special_cases(tab, 1);
 	tab->width -= 1;
 	if (tab->width > 0 && !tab->dash)
 		align(tab, tab->width, ' ');
@@ -121,9 +57,8 @@ int	print_format(t_printf *tab, char f)
 	if (f == 'f')
 		print_f(tab);
 	if (f == 'x' || f == 'X')
-		print_xX(tab, f, 16);
+		print_xx(tab, f, 16);
 	if (f == 'o')
 		print_o(tab, 8);
 	return (tab->b_written);
 }
-

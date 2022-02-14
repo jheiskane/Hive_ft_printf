@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/10 12:25:03 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:27:34 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,6 @@ static long long int	check_min(long long int nb, char *min)
 	}
 	return (nb);
 }
-
 
 char	*ft_itoa_base(long long int nb, int base)
 {

@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   print_c.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/02/14 17:12:23 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/02/14 17:12:49 by jheiskan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
-void print_char(t_printf *tab)
+void	print_char(t_printf *tab)
 {
-	char a;
+	char	a;
 
 	a = va_arg(tab->args, int);
 	tab->width -= 1;

@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/02/14 16:59:46 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:32:39 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ typedef struct s_printf
 	int		zero;
 	int		percent;
 	int		space;
-	int		p_nothi;
+	int		p_not;
 	int		dot;
 	int		h;
 	int		L;
@@ -52,7 +52,7 @@ long double	special_cases_f(t_printf *tab);
 void print_f(t_printf *tab);
 char	*ft_itoa_float(t_printf *tab, long double nb);
 void print_u(t_printf *tab);
-void	print_xX(t_printf *tab, char f, int base);
+void	print_xx(t_printf *tab, char f, int base);
 void	print_o(t_printf *tab, int base);
 int	ft_printf (const char *str_format, ...);
 int	calc_preci(t_printf *tab, const char *str, int i);
@@ -62,9 +62,6 @@ int	is_percent(t_printf *tab, const char *str, int i);
 int	is_space(t_printf *tab, const char *str, int i);
 int	is_sign(t_printf *tab, const char *str, int i);
 int	is_dash(t_printf *tab, const char *str, int i);
-int	is_hash(t_printf *tab, const char *str, int i);
-int	is_percent(t_printf *tab, const char *str, int i);
-int	is_zero(t_printf *tab, const char *str, int i);
 int	is_l(t_printf *tab, const char *str, int i);
 int	is_h(t_printf *tab, const char *str, int i);
 int	is_L(t_printf *tab, const char *str, int i);
@@ -77,5 +74,6 @@ void print_di(t_printf *tab);
 char	*ft_itoa_base(long long int nb, int base);
 void print_p(t_printf *tab);
 char	*align_di(t_printf *tab, int len, char c, char *s);
+int	is_hs_zr(t_printf *tab, const char *str, int i);
 
 #endif

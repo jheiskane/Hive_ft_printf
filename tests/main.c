@@ -288,42 +288,42 @@ int main()
 
 	printf("\n1\n");
 	printf("ft_printf:\n");
-	a = ft_printf("% d", -9999);
+	a = ft_printf("%+d", -42);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
-	a =  printf("% d", -9999);
+	a =  printf("%+d", -42);
 	printf("\nreturn value = %d", a);
 
-	printf("\n1\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%.3f %.3f %.3f", NULL, 1.5525, 2.5425);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a =  printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
-	printf("\nreturn value = %d", a);
-
-	printf("\n1\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a =  printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
-	printf("\nreturn value = %d", a);
-
-	printf("\n2\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%d", -42);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%d", -42);
-	printf("\nreturn value = %d", a);
-// //-9223372036854775808
-// 	printf("\n3\n");
+// 	printf("\n1\n");
 // 	printf("ft_printf:\n");
-// 	a = ft_printf("% d", -9999);
+// 	a = ft_printf("%.3f %.3f %.3f", NULL, 1.5525, 2.5425);
 // 	printf("\nreturn value = %d", a);
 // 	printf("\nReal printf: \n");
-// 	a = printf("% d", -9999);
+// 	a =  printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
+// 	printf("\nreturn value = %d", a);
+
+// 	printf("\n1\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a =  printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
+// 	printf("\nreturn value = %d", a);
+
+// 	printf("\n2\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%d", -42);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%d", -42);
+// 	printf("\nreturn value = %d", a);
+// // //-9223372036854775808
+// 	printf("\n3\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%s", "abc");
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%s", "abc");
 // 	printf("\nreturn value = %d", a);
 
 // 	printf("\n4\n");

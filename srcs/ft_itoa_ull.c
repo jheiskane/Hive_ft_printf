@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/10 12:48:37 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/14 18:27:20 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,6 @@ char	*ft_itoa_ull(unsigned long long int nb, int base)
 		x++;
 	}
 	new = ft_strnew(x);
-	if (!new)
-		return (NULL);
 	while (x > 0)
 	{
 		rem = 0;

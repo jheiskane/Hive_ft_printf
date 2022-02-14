@@ -6,7 +6,7 @@
 #    By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 09:59:08 by smarvin           #+#    #+#              #
-#    Updated: 2022/02/10 13:44:37 by jheiskan         ###   ########.fr        #
+#    Updated: 2022/02/14 18:19:05 by jheiskan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,6 @@ SRCS =	ft_atoi.c\
 		print_format.c\
 		print_p.c\
 		ft_itoa_base.c\
-		save_format.c\
 		print_s.c\
 		ft_bzero.c\
 		ft_strlen.c\
@@ -38,6 +37,9 @@ SRCS =	ft_atoi.c\
 		ft_strcpy.c\
 		ft_itoa_ull.c\
 		ft_abs.c\
+		align.c\
+		s_format.c\
+		s_format_add.c\
 		ft_memalloc.c
 
 OBJ_NAME = $(SRCS:.c=.o)

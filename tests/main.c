@@ -288,67 +288,83 @@ int main()
 
 	printf("\n1\n");
 	printf("ft_printf:\n");
-	a = ft_printf("%+d", -42);
+	a = ft_printf("%.1f %.1f %.1f", 0.15, 12.15, 22.15);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
-	a =  printf("%+d", -42);
+	a =  printf("%.1f %.1f %.1f", 0.15, 12.15, 22.15);
+	printf("\nreturn value = %d", a);
+
+	printf("\n1\n");
+	printf("ft_printf:\n");
+	a = ft_printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
+	printf("\nreturn value = %d", a);
+	printf("\nReal printf: \n");
+	a =  printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
+	printf("\nreturn value = %d", a);
+
+	printf("\n1\n");
+	printf("ft_printf:\n");
+	a = ft_printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
+	printf("\nreturn value = %d", a);
+	printf("\nReal printf: \n");
+	a =  printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
 	printf("\nreturn value = %d", a);
 
 	printf("\n2\n");
 	printf("ft_printf:\n");
-	a = ft_printf("%s%d%p%%%i%o%u%x%X%c","bonjour", 42, &c, 42, 42, 42, 42, 42, 'c');
+	a = ft_printf("%d", -42);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
-	a = printf("%s%d%p%%%i%o%u%x%X%c","bonjour", 42, &c, 42, 42, 42, 42, 42, 'c');
+	a = printf("%d", -42);
 	printf("\nreturn value = %d", a);
-//-9223372036854775808
-	printf("\n3\n");
-	printf("ft_printf:\n");
-	a = ft_printf("% d", -9999);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("% d", -9999);
-	printf("\nreturn value = %d", a);
+// //-9223372036854775808
+// 	printf("\n3\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("% d", -9999);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("% d", -9999);
+// 	printf("\nreturn value = %d", a);
 
-	printf("\n4\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%+d", -42);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%+d", -42);
-	printf("\nreturn value = %d", a);
+// 	printf("\n4\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%.f %.f %.f", 0.5, 1.5, 2.5);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%.f %.f %.f", 0.5, 1.5, 2.5);
+// 	printf("\nreturn value = %d", a);
 
-	printf("\n5\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%5.o%5.0o", 0, 0);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%5.o%5.0o", 0, 0);
-	printf("\nreturn value = %d", a);
+// 	printf("\n5\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%5.o%5.0o", 0, 0);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%5.o%5.0o", 0, 0);
+// 	printf("\nreturn value = %d", a);
 
-	printf("\n6\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%0+5d", -42);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%0+5d", -42);
-	printf("\nreturn value = %d", a);
+// 	printf("\n6\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%0+5d", -42);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%0+5d", -42);
+// 	printf("\nreturn value = %d", a);
 
-	printf("\n7\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%-+10.5d", 4242);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%-+10.5d", 4242);
-	printf("\nreturn value = %d", a);
+// 	printf("\n7\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%-+10.5d", 4242);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%-+10.5d", 4242);
+// 	printf("\nreturn value = %d", a);
 
-	printf("\n8\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%5.d%5.0d", 0, 0);
-	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%5.d%5.0d", 0, 0);
-	printf("\nreturn value = %d", a);
+// 	printf("\n8\n");
+// 	printf("ft_printf:\n");
+// 	a = ft_printf("%5.d%5.0d", 0, 0);
+// 	printf("\nreturn value = %d", a);
+// 	printf("\nReal printf: \n");
+// 	a = printf("%5.d%5.0d", 0, 0);
+// 	printf("\nreturn value = %d", a);
 
 
 	// printf("\n9\n");

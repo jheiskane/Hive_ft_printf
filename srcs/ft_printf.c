@@ -20,7 +20,7 @@ void	ini_struct(t_printf *tab)
 	tab->h = 0;
 	tab->error = 0;
 	tab->p_nothi = 0;
-	tab->conversions = "udcsfuipxX%"; //allocate and free?
+	tab->conversions = "udcsofuipxX%"; //allocate and free?
 
 }
 int	save_format(t_printf *tab, const char *str, int i)
@@ -46,7 +46,7 @@ int	save_format(t_printf *tab, const char *str, int i)
 		if (error == i)
 		{
 			tab->error = 1; // nothing is done with this yet
-			break;
+			return (i - 1);
 		}
 	}
 	// Error checking here? If none of the parameters found and conversion not found exit()?

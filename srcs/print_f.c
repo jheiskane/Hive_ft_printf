@@ -14,5 +14,7 @@ void print_f(t_printf *tab)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		s = align_f(tab, tab->preci, ' ', s);
+	if (*s && *s != '0')
+		free (s);
 	va_end(tab->args);
 }

@@ -28,7 +28,6 @@ char	*align_di(t_printf *tab, int len, char c, char *s)
 		else if (tab->sign)
 		{
 			tab->b_written += write(1, "+", 1);
-			//len--;
 		}
 		else if (tab->space)
 			tab->b_written += write(1, " ", 1);
@@ -105,6 +104,8 @@ void	print_percent(t_printf *tab)
 
 int	print_format(t_printf *tab, char f)
 {
+	if (tab->error)
+		return (0);
 	if (f == 'c')
 		print_char(tab);
 	if (f == '%')

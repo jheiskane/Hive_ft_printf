@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/02/11 12:48:32 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/02/14 16:59:46 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,6 @@ char	*conv_hash(t_printf *tab, char *str, char f);
 char	*ft_itoa_ull(unsigned long long int nb, int base);
 size_t	special_cases_uox(t_printf *tab);
 void	fill_preci_diouxX(t_printf *tab);
-///char	*ft_itoa_double(long double nb, int preci);
 long double	special_cases_f(t_printf *tab);
 void print_f(t_printf *tab);
 char	*ft_itoa_float(t_printf *tab, long double nb);

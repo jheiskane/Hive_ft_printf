@@ -26,7 +26,10 @@ int	ft_strlen_di(const char *str)
 void print_di(t_printf *tab)
 {
 	char	*s;
+	char	*tmp;
+
 	s = ft_itoa_base(special_cases_di(tab), 10);
+	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_nothi = 1;
 	tab->width -= ft_strlen(s) + ((tab->sign && *s != '-') || tab->space) - tab->p_nothi;
@@ -44,18 +47,22 @@ void print_di(t_printf *tab)
 	while (*s && !tab->p_nothi)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
-		align_di(tab, tab->width, ' ', s);
+		s = align_di(tab, tab->width, ' ', s);
+	if (*tmp && *tmp != '0')
+		free (tmp);
 	va_end(tab->args);
 }
 
 void print_o(t_printf *tab, int base)
 {
 	char	*s;
+	char	*tmp;
 
 	if (tab->ll || tab->l)
 		s = ft_itoa_ull(special_cases_uox(tab), base);
 	else
 		s = ft_itoa_base(special_cases_uox(tab), base);
+	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot && !tab->hash)
 		tab->p_nothi = 1;
 	tab->preci -= ft_strlen(s);
@@ -77,18 +84,22 @@ void print_o(t_printf *tab, int base)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		align_di(tab, tab->width, ' ', s);
+	if (*tmp && *tmp != '0')
+		free (tmp);
 	va_end(tab->args);
 }
 
 void print_xX(t_printf *tab, char f, int base)
 {
 	char	*s;
+	char	*tmp;
 
 	tab->error = 0;
 	if (tab->ll || tab->l)
 		s = ft_itoa_ull(special_cases_uox(tab), base);
 	else
 		s = ft_itoa_base(special_cases_uox(tab), base);
+	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_nothi = 1;
 	tab->preci -= ft_strlen(s);
@@ -123,18 +134,23 @@ void print_xX(t_printf *tab, char f, int base)
 	}
 	if (tab->width > 0 && tab->dash)
 		align_di(tab, tab->width - (2 * tab->hash), ' ', s);
+	if (*tmp && *tmp != '0')
+		free (tmp);
 	va_end(tab->args);
 }
 
 void print_u(t_printf *tab)
 {
 	char	*s;
+	char	*tmp;
+
 	if (tab->ll || tab->l)
 		s = ft_itoa_ull(special_cases_uox(tab), 10);
 	else
 		s = ft_itoa_base(special_cases_uox(tab), 10);
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_nothi = 1;
+	tmp = s;
 	tab->width -= ft_strlen(s);
 	tab->preci -= ft_strlen(s);
 	if (tab->preci > 0)
@@ -149,5 +165,7 @@ void print_u(t_printf *tab)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
 		align_di(tab, tab->width, ' ', s);
+	if (*tmp && *tmp != '0')
+		free (tmp);
 	va_end(tab->args);
 }

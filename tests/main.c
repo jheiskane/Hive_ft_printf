@@ -288,15 +288,15 @@ int main()
 
 	printf("\n1\n");
 	printf("ft_printf:\n");
-	a = ft_printf("%.1f %.1f %.1f", 0.15, 12.15, 22.15);
+	a = ft_printf("% d", -9999);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
-	a =  printf("%.1f %.1f %.1f", 0.15, 12.15, 22.15);
+	a =  printf("% d", -9999);
 	printf("\nreturn value = %d", a);
 
 	printf("\n1\n");
 	printf("ft_printf:\n");
-	a = ft_printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
+	a = ft_printf("%.3f %.3f %.3f", NULL, 1.5525, 2.5425);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
 	a =  printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);

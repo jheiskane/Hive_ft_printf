@@ -7,12 +7,12 @@ void print_s(t_printf *tab)
 
 	len = 1;
 	p = va_arg(tab->args, char *);
+	tab->zero = 0;
 	if (!p)
 	{
 		tab->b_written += write(1, "(null)", 6);
 		return ;
 	}
-
 	if (tab->dot && tab->preci < ft_strlen(p))
 		tab->width -= tab->preci;
 	else

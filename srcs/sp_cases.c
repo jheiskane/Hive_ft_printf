@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:49:09 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 18:49:10 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:56:25 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ ssize_t	special_cases_di(t_printf *tab)
 
 long double	special_cases_f(t_printf *tab)
 {
-	if (tab->L)
+	if (tab->cap_l)
 		return ((long double)va_arg(tab->args, long double));
 	else if (tab->l)
 		return ((double)va_arg(tab->args, double));

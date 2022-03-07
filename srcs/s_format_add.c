@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:17:24 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 19:02:49 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:56:08 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,7 @@ int	is_l(t_printf *tab, const char *str, int i)
 	}
 	if (str[i] == 'L')
 	{
-		tab->L = 1;
+		tab->cap_l = 1;
 		i++;
 	}
 	return (i);

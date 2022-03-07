@@ -6,11 +6,19 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:47 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 18:33:30 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/03/07 11:33:21 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+void	print_ox_s(t_printf *tab, char f)
+{
+	if (f == 'x')
+		tab->b_written += write(1, "0x", 2);
+	else if (f == 'X')
+		tab->b_written += write(1, "0X", 2);
+}
 
 char	*conv_hash(t_printf *tab, char *str, char f)
 {

@@ -1,16 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_ull.c                                      :+:      :+:    :+:   */
+/*   ft_itoa_long.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 18:27:20 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:37:14 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
+
+char	*ft_itoa_ll(ssize_t nb)
+{
+	char	*new;
+	int		x;
+	ssize_t	rem;
+
+	if (nb == 0)
+		return (ft_strdup("0"));
+	rem = nb;
+	x = (nb < 0);
+	while (rem != 0)
+	{
+		rem = rem / 10;
+		x++;
+	}
+	new = ft_strnew(x);
+	if (nb < 0)
+		new[0] = '-';
+	while (x > 0 && new[x - 1] != '-')
+	{
+		new[--x] = ft_abs(nb % 10) + '0';
+		nb /= 10;
+	}
+	return (new);
+}
 
 char	*ft_itoa_ull(unsigned long long int nb, int base)
 {
@@ -20,7 +46,7 @@ char	*ft_itoa_ull(unsigned long long int nb, int base)
 
 	x = 0;
 	if (nb == 0)
-		return ("0");
+		return (ft_strdup("0"));
 	rem = nb;
 	while (rem > 0)
 	{

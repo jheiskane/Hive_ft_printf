@@ -190,15 +190,15 @@ int main()
 	// a = 13;
 	// printf("\nPlain X\n");
 	// printf("ft_printf: \n");
-	// ft_printf("%X\n", a);
+	// ft_printf("%+d", -42);
 	// printf("\nReal printf: \n");
-	// printf("%X\n", a);
+	// printf("%+d", -42);
 
 	// printf("\nPlain X\n");
 	// printf("ft_printf: \n");
-	// ft_printf("%x\n", a);
+	// ft_printf("%+d", -42);
 	// printf("\nReal printf: \n");
-	// printf("%x\n", a);
+	// printf("%+d", -42);
 	// a = 42;
 
 	// /* Plain o */
@@ -280,42 +280,46 @@ int main()
 	// printf("printf return value: %d\n", a);
 
 
-	// printf("\nPlain X\n");
-	// printf("ft_printf: \n");
-	// ft_printf("%x\n", a);
-	// printf("\nReal printf: \n");
-	// printf("%x\n", a);
-
-	printf("\n1\n");
-	printf("ft_printf:\n");
-	a = ft_printf("%+d", -42);
+	printf("\nPlain X\n");
+	printf("ft_printf: \n");
+	a = ft_printf("%o", NULL);
 	printf("\nreturn value = %d", a);
 	printf("\nReal printf: \n");
-	a =  printf("%+d", -42);
+	a = printf("%o", NULL);
 	printf("\nreturn value = %d", a);
 
+
+
+	// printf("\n1\n");
+	// printf("ft_printf:\n");
+	// a = ft_printf("% d", -9999);
+	// printf("\nreturn value = %d", a);
+	// printf("\nReal printf: \n");
+	// a =  printf("% d", -9999);
+	// printf("\nreturn value = %d", a);
+
 // 	printf("\n1\n");
 // 	printf("ft_printf:\n");
-// 	a = ft_printf("%.3f %.3f %.3f", NULL, 1.5525, 2.5425);
+// 	a = ft_printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
 // 	printf("\nreturn value = %d", a);
 // 	printf("\nReal printf: \n");
-// 	a =  printf("%.3f %.3f %.3f", 2.5, 1.5525, 2.5425);
+// 	a =  printf(" %p %p ", ULONG_MAX, -ULONG_MAX);
 // 	printf("\nreturn value = %d", a);
 
 // 	printf("\n1\n");
 // 	printf("ft_printf:\n");
-// 	a = ft_printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
+// 	a = ft_printf("%d", 0);
 // 	printf("\nreturn value = %d", a);
 // 	printf("\nReal printf: \n");
-// 	a =  printf("%.1f %.1f %.1f", 6.45, 7.45, 8.45);
+// 	a =  printf("%d", 0);
 // 	printf("\nreturn value = %d", a);
 
 // 	printf("\n2\n");
 // 	printf("ft_printf:\n");
-// 	a = ft_printf("%d", -42);
+// 	a = ft_printf("{%10d}", -42);
 // 	printf("\nreturn value = %d", a);
 // 	printf("\nReal printf: \n");
-// 	a = printf("%d", -42);
+// 	a = printf("{%10d}", -42);
 // 	printf("\nreturn value = %d", a);
 // // //-9223372036854775808
 // 	printf("\n3\n");
@@ -342,29 +346,29 @@ int main()
 // 	a = printf("%5.o%5.0o", 0, 0);
 // 	printf("\nreturn value = %d", a);
 
-// 	printf("\n6\n");
-// 	printf("ft_printf:\n");
-// 	a = ft_printf("%0+5d", -42);
-// 	printf("\nreturn value = %d", a);
-// 	printf("\nReal printf: \n");
-// 	a = printf("%0+5d", -42);
-// 	printf("\nreturn value = %d", a);
+	// printf("\n6\n");
+	// printf("ft_printf:\n");
+	// a = ft_printf("%0+5d", -42);
+	// printf("\nreturn value = %d", a);
+	// printf("\nReal printf: \n");
+	// a = printf("%0+5d", -42);
+	// printf("\nreturn value = %d", a);
 
-// 	printf("\n7\n");
-// 	printf("ft_printf:\n");
-// 	a = ft_printf("%-+10.5d", 4242);
-// 	printf("\nreturn value = %d", a);
-// 	printf("\nReal printf: \n");
-// 	a = printf("%-+10.5d", 4242);
-// 	printf("\nreturn value = %d", a);
+	// printf("\n7\n");
+	// printf("ft_printf:\n");
+	// a = ft_printf("%-+10.5d", 4242);
+	// printf("\nreturn value = %d", a);
+	// printf("\nReal printf: \n");
+	// a = printf("%-+10.5d", 4242);
+	// printf("\nreturn value = %d", a);
 
-// 	printf("\n8\n");
-// 	printf("ft_printf:\n");
-// 	a = ft_printf("%5.d%5.0d", 0, 0);
-// 	printf("\nreturn value = %d", a);
-// 	printf("\nReal printf: \n");
-// 	a = printf("%5.d%5.0d", 0, 0);
-// 	printf("\nreturn value = %d", a);
+	// printf("\n8\n");
+	// printf("ft_printf:\n");
+	// a = ft_printf("%5.d%5.0d", 0, 0);
+	// printf("\nreturn value = %d", a);
+	// printf("\nReal printf: \n");
+	// a = printf("%5.d%5.0d", 0, 0);
+	// printf("\nreturn value = %d", a);
 
 
 	// printf("\n9\n");

@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:16:34 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 17:22:49 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/03/07 13:46:03 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@ char	*align_di(t_printf *tab, int len, char c, char *s)
 		if (*s == '-')
 			tab->b_written += write(1, &*s++, 1);
 		else if (tab->sign)
-		{
 			tab->b_written += write(1, "+", 1);
-		}
 		else if (tab->space)
 			tab->b_written += write(1, " ", 1);
 	}
@@ -63,11 +61,8 @@ char	*align_f(t_printf *tab, int len, char c, char *s)
 	}
 	if (tab->zero && !tab->dash)
 		c = '0';
-	while (len > i)
-	{
+	while (len > i++)
 		write(1, &c, 1);
-		i++;
-	}
 	if (!tab->zero && *s == '-')
 		tab->b_written += write(1, &*s++, 1);
 	tab->b_written += len;

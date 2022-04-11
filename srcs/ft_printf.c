@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:49:54 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/03/07 13:57:15 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/11 15:25:04 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ int	save_format(t_printf *tab, const char *str, int i)
 {
 	int	error;
 
-	is_percent(tab, str, i);
 	while (str[i] && !ft_strchr(tab->conversions, str[i]))
 	{
 		error = i;
@@ -45,6 +44,7 @@ int	save_format(t_printf *tab, const char *str, int i)
 		i = is_space(tab, str, i);
 		i = is_dot(tab, str, i);
 		i = is_sign(tab, str, i);
+		i = is_percent(tab, str, i);
 		i = is_dash(tab, str, i);
 		i = is_space(tab, str, i);
 		i = is_width(tab, str, i);

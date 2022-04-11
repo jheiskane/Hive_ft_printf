@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:17:24 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/03/07 13:56:08 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/11 14:37:48 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,9 +91,6 @@ int	is_l(t_printf *tab, const char *str, int i)
 int	is_percent(t_printf *tab, const char *str, int i)
 {
 	if (str[i] == '%')
-	{
 		tab->percent = 1;
-		i++;
-	}
 	return (i);
 }

@@ -37,7 +37,7 @@ int main()
 
 
 
-
+	
 
 
 
@@ -280,14 +280,28 @@ int main()
 	// printf("printf return value: %d\n", a);
 
 
-	printf("\nPlain X\n");
+	printf("\nRandom test\n");
 	printf("ft_printf: \n");
-	a = ft_printf("%o", NULL);
+	a = ft_printf("%3u", 0);
 	printf("\nreturn value = %d", a);
-	printf("\nReal printf: \n");
-	a = printf("%o", NULL);
+	printf("\nprintf: \n");
+	a = printf("%3u", 0);
 	printf("\nreturn value = %d", a);
 
+	printf("\nRandom test 2\n");
+	printf("ft_printf: \n");
+	a = ft_printf("%.03s", NULL);
+	printf("\nreturn value = %d", a);
+	printf("\nprintf: \n");
+	a = printf("%.03s", NULL);;
+	printf("\nreturn value = %d", a);
+
+	printf("\nRandom test 3\n");
+	printf("ft_printf: \n");
+	a = ft_printf("[%3.s]", NULL);
+	printf("\nreturn value = %d\n", a);
+	a = printf("[%3.s]", NULL);
+	printf("\nreturn value = %d\n", a);
 
 
 	// printf("\n1\n");

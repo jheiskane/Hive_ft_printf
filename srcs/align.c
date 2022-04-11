@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:16:34 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/03/07 13:46:03 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/11 14:55:37 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	align(t_printf *tab, int len, char c)
 	int	i;
 
 	i = 0;
-	if (tab->zero)
+	if (tab->zero && !tab->dash)
 		c = '0';
 	while (len > i)
 	{

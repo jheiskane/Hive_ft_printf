@@ -6,9 +6,11 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:25:20 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/02/14 18:25:21 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/20 17:14:54 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "ft_printf.h"
 
 long double	ft_abs(long double nb)
 {

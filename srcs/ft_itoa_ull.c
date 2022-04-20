@@ -1,31 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   print_f.c                                          :+:      :+:    :+:   */
+/*   ft_itoa_ull.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/02/14 17:13:26 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/12 10:53:16 by jheiskan         ###   ########.fr       */
+/*   Created: 2022/04/20 16:53:52 by jheiskan          #+#    #+#             */
+/*   Updated: 2022/04/20 17:14:36 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-void	print_f(t_printf *tab)
+char	*ft_itoa_ull(unsigned long long int nb, int base)
 {
-	char	*s;
-	char	*tmp;
+	char					*new;
+	int						x;
+	unsigned long long int	rem;
 
-	s = ft_itoa_float(tab, special_cases_f(tab));
-	tmp = s;
-	tab->width -= ft_strlen(s) + (tab->sign || tab->space);
-	if (tab->width > 0 && !tab->dash)
-		s = align_f(tab, tab->width, ' ', s);
-	while (*s)
-		tab->b_written += write(1, &*s++, 1);
-	if (tab->width > 0 && tab->dash)
-		s = align_f(tab, tab->preci, ' ', s);
-	free (tmp);
-	va_end(tab->args);
+	x = 0;
+	if (nb == 0)
+		return (ft_strdup("0"));
+	rem = nb;
+	while (rem > 0)
+	{
+		rem = rem / base;
+		x++;
+	}
+	new = ft_strnew(x);
+	while (x > 0)
+	{
+		rem = 0;
+		rem = nb % base;
+		if (rem > 9)
+			new[--x] = rem - 10 + 'a';
+		else if (rem < 10)
+			new[--x] = rem + '0';
+		nb /= base;
+	}
+	return (new);
 }

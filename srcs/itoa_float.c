@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/11 14:48:19 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/20 16:51:37 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 long double	round_nb(long double nb, int preci)
 {
 	long double	round;
-	long double	tmp;
 	double		digit;
 	int			d;
 	int			x;

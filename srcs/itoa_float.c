@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/22 13:23:42 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/22 15:10:53 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,15 @@ char	*save_to_str(long double a_com, int preci)
 	return (new);
 }
 
+char *handle_nan_infinity(long double nb)
+{
+	if (nb == 1.0 / 0)
+		return (ft_strdup("inf"));
+	if (!(nb == nb))
+		return (ft_strdup("nan"));
+	return (ft_strdup("-inf"));
+}
+
 char	*ft_itoa_float(t_printf *tab, long double nb)
 {
 	long double				a_com;
@@ -67,15 +76,17 @@ char	*ft_itoa_float(t_printf *tab, long double nb)
 	char					*new;
 	int						neg_zero;
 
-	neg_zero = nb == 1 && 1 / nb < 0;
+	neg_zero = nb == 0 && 1 / nb < 0;
 	if (!tab->dot)
 		tab->preci = 6;
+	if (nb == 1.0 / 0 || nb == -1.0 / 0 || !(nb == nb))
+		return (handle_nan_infinity(nb));
 	nb = round_nb(nb, tab->preci);
 	b_com = nb;
 	new = ft_itoa_ll(b_com);
 	a_com = ft_abs(nb) - ft_abs(b_com);
 	new = ft_joindel(new, save_to_str(a_com, tab->preci));
 	if (neg_zero)
-		new = ft_strjoin(ft_strdup("-"), new);
+		new = ft_joindel(ft_strdup("-"), new);
 	return (new);
 }

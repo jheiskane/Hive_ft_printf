@@ -37,7 +37,7 @@ int main()
 
 
 
-	
+
 
 
 
@@ -279,29 +279,43 @@ int main()
 	// a = printf("{%f}{%lf}{%Lf}", 1444565444646.6465424242242, 1444565444646.6465424242242, 1444565444646.6465424242242l);
 	// printf("printf return value: %d\n", a);
 
+	// b = -0.0;
+	// b = 1/b;
+	// printf("zero double: %f\n", b);
+	// b = -0.0;
+	// //a = (b>>0) & 1;
+	// printf("negative\n");
+	// // if ((double)b & ((double)0 << (double)0))
+	// // 	printf("positive\n");
+	// printf("zero double: %f\n", b);
 
 	printf("\nRandom test\n");
 	printf("ft_printf: \n");
-	a = ft_printf("%3u", 0);
+	b = -0.00;
+	if (b == 0 && 1 / b < 0)
+		printf("zero is negative");
+	if (b == 0 && 1 / b > 0)
+		printf("zero is positive");
+	a = ft_printf("[%f]\n", b);
 	printf("\nreturn value = %d", a);
 	printf("\nprintf: \n");
-	a = printf("%3u", 0);
+	a = printf("[%f]\n", b);
 	printf("\nreturn value = %d", a);
 
-	printf("\nRandom test 2\n");
-	printf("ft_printf: \n");
-	a = ft_printf("%.03s", NULL);
-	printf("\nreturn value = %d", a);
-	printf("\nprintf: \n");
-	a = printf("%.03s", NULL);;
-	printf("\nreturn value = %d", a);
+	// printf("\nRandom test 2\n");
+	// printf("ft_printf: \n");
+	// a = ft_printf("%.03s", NULL);
+	// printf("\nreturn value = %d", a);
+	// printf("\nprintf: \n");
+	// a = printf("%.03s", NULL);;
+	// printf("\nreturn value = %d", a);
 
-	printf("\nRandom test 3\n");
-	printf("ft_printf: \n");
-	a = ft_printf("[%3.s]", NULL);
-	printf("\nreturn value = %d\n", a);
-	a = printf("[%3.s]", NULL);
-	printf("\nreturn value = %d\n", a);
+	// printf("\nRandom test 3\n");
+	// printf("ft_printf: \n");
+	// a = ft_printf("[%3.s]", NULL);
+	// printf("\nreturn value = %d\n", a);
+	// a = printf("[%3.s]", NULL);
+	// printf("\nreturn value = %d\n", a);
 
 
 	// printf("\n1\n");

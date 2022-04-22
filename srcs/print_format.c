@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:47 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/11 12:35:13 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/22 13:11:12 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*conv_hash(t_printf *tab, char *str, char f)
 	if (tab->hash && *str != '0')
 	{
 		if (f == 'X')
-			str = ft_strjoin("0x", str);
+			str = ft_joindel("0x", str);
 		else if (f == 'x')
-			str = ft_strjoin("0x", str);
+			str = ft_joindel("0x", str);
 		free (tmp);
 	}
 	return (str);

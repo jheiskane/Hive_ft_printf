@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa_float.c                                    :+:      :+:    :+:   */
+/*   itoa_float.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/20 16:51:37 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/22 13:11:27 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ char	*ft_itoa_float(t_printf *tab, long double nb)
 	b_com = nb;
 	new = ft_itoa_ll(b_com);
 	a_com = ft_abs(nb) - ft_abs(b_com);
-	new = ft_strjoin(new, save_to_str(a_com, tab->preci));
+	new = ft_joindel(new, save_to_str(a_com, tab->preci));
 	return (new);
 }

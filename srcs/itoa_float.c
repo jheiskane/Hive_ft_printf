@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/22 15:10:53 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/04/25 11:16:32 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ char	*save_to_str(long double a_com, int preci)
 	return (new);
 }
 
-char *handle_nan_infinity(long double nb)
+char	*handle_nan_infinity(long double nb)
 {
 	if (nb == 1.0 / 0)
 		return (ft_strdup("inf"));
@@ -71,12 +71,12 @@ char *handle_nan_infinity(long double nb)
 
 char	*ft_itoa_float(t_printf *tab, long double nb)
 {
-	long double				a_com;
-	long long int			b_com;
-	char					*new;
-	int						neg_zero;
+	long double		a_com;
+	long long int	b_com;
+	char			*new;
+	int				neg_zero;
 
-	neg_zero = nb == 0 && 1 / nb < 0;
+	neg_zero = nb == (0 && 1 / nb < 0);
 	if (!tab->dot)
 		tab->preci = 6;
 	if (nb == 1.0 / 0 || nb == -1.0 / 0 || !(nb == nb))

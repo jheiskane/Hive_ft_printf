@@ -6,12 +6,13 @@
 #    By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/10/27 09:59:08 by smarvin           #+#    #+#              #
-#    Updated: 2022/04/22 13:14:45 by jheiskan         ###   ########.fr        #
+#    Updated: 2022/04/25 11:13:54 by jheiskan         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libftprintf.a
 FLAGS = -Wall -Wextra -Werror
+
 
 SRCS =	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
 		ft_isascii.c ft_isdigit.c ft_isprint.c ft_itoa.c ft_lstadd.c\
@@ -44,10 +45,11 @@ SRCS =	ft_atoi.c ft_bzero.c ft_isalnum.c ft_isalpha.c\
 		s_format_add.c\
 		print_xX.c\
 
+OBJ_NAME = $(SRCS:.c=.o)
 
-OBJ = $(SRCS:.c=.o)
-
+OBJ = $(addprefix $(OBJ_DIR),$(OBJ_NAME))
 SRC_DIR = srcs/
+OBJ_DIR = objs/
 
 all: $(NAME)
 
@@ -55,7 +57,8 @@ $(NAME): $(OBJ)
 	@ar rcs $(NAME) $(OBJ)
 	@echo "libftprintf.a created"
 
-%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+	@mkdir -p $(OBJ_DIR)
 	@gcc $(FLAGS) -I./includes -o $@ -c $<
 
 clean:

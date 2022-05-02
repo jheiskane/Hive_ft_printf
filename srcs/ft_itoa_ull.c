@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/20 16:53:52 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/20 17:14:36 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:33:23 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ char	*ft_itoa_ull(unsigned long long int nb, int base)
 		x++;
 	}
 	new = ft_strnew(x);
-	while (x > 0)
+	while (new && x > 0)
 	{
 		rem = 0;
 		rem = nb % base;

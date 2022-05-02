@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:49:54 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/20 17:29:45 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 14:13:51 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,16 @@ int	save_format(t_printf *tab, const char *str, int i)
 	return (i);
 }
 
+t_printf	*allocate_tab()
+{
+	t_printf *tab;
+	
+	tab = (t_printf *)malloc(sizeof(t_printf));
+	if (!tab)
+		exit(-1);
+	return (tab);
+}
+
 int	ft_printf(const char *str_format, ...)
 {
 	t_printf	*tab;
@@ -68,7 +78,7 @@ int	ft_printf(const char *str_format, ...)
 
 	i = 0;
 	ret = 0;
-	tab = (t_printf *)malloc(sizeof(t_printf));
+	tab = allocate_tab();
 	ini_struct(tab);
 	va_start(tab->args, str_format);
 	while (str_format[i])

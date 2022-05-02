@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 17:40:51 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/20 17:14:43 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:32:43 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,9 +28,9 @@ char	*ft_itoa_ll(long long int nb)
 		x++;
 	}
 	new = ft_strnew(x);
-	if (nb < 0)
+	if (new && nb < 0)
 		new[0] = '-';
-	while (x > 0 && new[x - 1] != '-')
+	while (new && x > 0 && new[x - 1] != '-')
 	{
 		new[--x] = ft_abs(nb % 10) + '0';
 		nb /= 10;

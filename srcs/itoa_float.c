@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/25 11:16:32 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:35:28 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,11 @@ char	*ft_itoa_float(t_printf *tab, long double nb)
 	nb = round_nb(nb, tab->preci);
 	b_com = nb;
 	new = ft_itoa_ll(b_com);
+	if (!new)
+		return (0);
 	a_com = ft_abs(nb) - ft_abs(b_com);
 	new = ft_joindel(new, save_to_str(a_com, tab->preci));
-	if (neg_zero)
+	if (new && neg_zero)
 		new = ft_joindel(ft_strdup("-"), new);
 	return (new);
 }

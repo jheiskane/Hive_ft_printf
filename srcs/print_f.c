@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:26 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/12 10:53:16 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:39:15 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@ void	print_f(t_printf *tab)
 	char	*tmp;
 
 	s = ft_itoa_float(tab, special_cases_f(tab));
+	if (!s)
+		exit(-1);
 	tmp = s;
 	tab->width -= ft_strlen(s) + (tab->sign || tab->space);
 	if (tab->width > 0 && !tab->dash)

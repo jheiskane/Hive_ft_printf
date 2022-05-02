@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:00 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/03/07 13:19:35 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:43:45 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@ void	print_xx(t_printf *tab, char f, int base)
 
 	tab->error = 0;
 	s = ft_itoa_ull(special_cases_uox(tab), base);
+	if (!s)
+		exit(-1);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_not = 1;

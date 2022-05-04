@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:26 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/02 13:39:15 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 14:07:16 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@ void	print_f(t_printf *tab)
 	while (*s)
 		tab->b_written += write(1, &*s++, 1);
 	if (tab->width > 0 && tab->dash)
-		s = align_f(tab, tab->preci, ' ', s);
+		s = align_f(tab, tab->width, ' ', s);
 	free (tmp);
-	va_end(tab->args);
 }

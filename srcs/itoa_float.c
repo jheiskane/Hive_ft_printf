@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 14:02:33 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 21:41:09 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ char	*save_to_str(long double a_com, int preci)
 
 	x = 1;
 	new = ft_strnew(preci + 1);
-	while (x <= preci)
+	while (new && x <= preci)
 	{
 		new[0] = '.';
 		tmp = a_com * 10;

@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:32:00 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/11 15:24:39 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 22:01:22 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,5 +38,4 @@ void	print_s(t_printf *tab)
 	}
 	if (tab->width > 0 && tab->dash)
 		align(tab, tab->width, ' ');
-	va_end(tab->args);
 }

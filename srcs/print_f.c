@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:26 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 15:26:32 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 15:31:55 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	print_f(t_printf *tab)
 		exit(-1);
 	tmp = s;
 	tab->width -= ft_strlen(s) + (tab->sign || tab->space);
-	if (tab->width > 0 && !tab->dash)
+	if (!tab->dash)
 		s = align_f(tab, tab->width, ' ', s);
 	while (*s)
 	{

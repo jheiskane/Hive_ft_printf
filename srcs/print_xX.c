@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:00 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/02 13:43:45 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 21:24:49 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	handle_hash(t_printf *tab, char *s, char f)
 		if (*s != '0' && tab->zero && !tab->dot)
 			print_ox_s(tab, f);
 		align_di(tab, tab->width - 2, ' ', s);
-		if (*s != '0' && !tab->zero)
+		if (*s != '0' && !tab->zero && !tab->dot)
 			print_ox_s(tab, f);
 	}
 	else

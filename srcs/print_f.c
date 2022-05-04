@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 17:13:26 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 15:31:55 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:52:07 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,11 @@ void	print_f(t_printf *tab)
 		exit(-1);
 	tmp = s;
 	tab->width -= ft_strlen(s) + (tab->sign || tab->space);
-	if (!tab->dash)
+	if (tab->zero || tab->width < 1)
+		s = print_signs(tab, s);
+	if (!tab->dash && tab->width > 0)
 		s = align_f(tab, tab->width, ' ', s);
+	s = print_signs(tab, s);
 	while (*s)
 	{
 		if (*s == '.')

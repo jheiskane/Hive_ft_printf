@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:28:50 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/02 14:34:34 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 16:48:19 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,12 +81,10 @@ void	print_o(t_printf *tab, int base)
 		tab->preci = 1;
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
-	if (tab->width > 0 && !tab->dash && tab->zero)
-		align_di(tab, tab->width, '0', s);
-	else if (tab->width > 0 && !tab->dash)
-		align_di(tab, tab->width, ' ', s);
+	if (tab->width > 0 && !tab->dash)
+		align(tab, tab->width, ' ');
 	if (tab->preci > 0)
-		align_di(tab, tab->preci, '0', s);
+		align(tab, tab->preci, '0');
 	write_n_pad(tab, &*s);
 	free (tmp);
 }

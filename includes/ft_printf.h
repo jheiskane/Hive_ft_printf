@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/04/20 16:36:00 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/04 18:21:21 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ typedef struct s_printf
 	char	*conversions;
 }			t_printf;
 
+char		*print_signs(t_printf *tab, char *s);
 long double	ft_abs(long double nb);
 char		*align_f(t_printf *tab, int len, char c, char *s);
 char		*conv_hash(t_printf *tab, char *str, char f);

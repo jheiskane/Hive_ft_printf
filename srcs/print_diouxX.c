@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:28:50 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/06 12:35:41 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/06 18:03:11 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,11 @@ void	print_di(t_printf *tab)
 	tab->preci -= ft_strlen_di(s);
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
-	if (tab->zero)
+	if (tab->zero && !tab->dot)
 		s = print_signs(tab, s);
 	if (tab->width > 0 && !tab->dash)
 		align(tab, tab->width, ' ');
-	if (!tab->zero)
+	if (!tab->zero || tab->dot)
 		s = print_signs(tab, s);
 	if (tab->preci > 0)
 		align(tab, tab->preci, '0');

@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:00 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 21:24:49 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/05 14:46:46 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ void	handle_hash(t_printf *tab, char *s, char f)
 	{
 		if (*s != '0' && tab->zero && !tab->dot)
 			print_ox_s(tab, f);
-		align_di(tab, tab->width - 2, ' ', s);
+		align(tab, tab->width - 2, ' ');
 		if (*s != '0' && !tab->zero && !tab->dot)
 			print_ox_s(tab, f);
 	}
 	else
-		align_di(tab, tab->width, ' ', s);
+		align(tab, tab->width, ' ');
 }
 
 void	print_x(t_printf *tab, char *s, char f)
@@ -57,9 +57,9 @@ void	print_xx(t_printf *tab, char f, int base)
 	else if (tab->hash && *s != '0')
 		print_ox_s(tab, f);
 	if (tab->preci > 0)
-		align_di(tab, tab->preci, '0', s);
+		align(tab, tab->preci, '0');
 	print_x(tab, s, f);
 	if (tab->width > 0 && tab->dash)
-		align_di(tab, tab->width - (2 * tab->hash), ' ', s);
+		align(tab, tab->width - (2 * tab->hash), ' ');
 	free (tmp);
 }

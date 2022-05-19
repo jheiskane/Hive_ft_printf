@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 21:41:09 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:05:23 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,27 +14,27 @@
 
 long double	round_nb(long double nb, int preci)
 {
-	long double	round;
-	long double	digit;
-	int			d;
-	int			x;
+	long double		round;
+	long double		digit;
+	long long int	d;
+	int				x;
 
-	digit = nb;
+	d = nb;
+	digit = ft_abs(nb) - ft_abs(d);
 	round = 0.5;
 	if (nb < 0)
 		round = -0.5;
 	x = 0;
-	while (x < preci)
+	while (x++ < preci)
 	{
 		round /= 10;
-		x++;
 		digit *= 10;
 	}
 	if (preci == 0)
 		digit = nb;
 	d = digit;
-	if (digit - d == 0.5 && d % 2 == 0)
-		return (nb - round);
+	if (d % 2 == 0 && ft_abs(digit) - ft_abs(d) <= 0.5)
+		return (nb);
 	return (nb + round);
 }
 
@@ -86,7 +86,7 @@ char	*ft_itoa_float(t_printf *tab, long double nb)
 		return (0);
 	a_com = ft_abs(nb) - ft_abs(b_com);
 	new = ft_joindel(new, save_to_str(a_com, tab->preci));
-	if ((new && neg_zero ) || (nb < 0 && !b_com))
+	if (new && (neg_zero || (nb < 0 && !b_com)))
 		new = ft_joindel(ft_strdup("-"), new);
 	return (new);
 }

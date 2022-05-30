@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:49:54 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/04 16:20:29 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:48:58 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,9 +60,9 @@ int	save_format(t_printf *tab, const char *str, int i)
 	return (i);
 }
 
-t_printf	*allocate_tab()
+t_printf	*allocate_tab(void)
 {
-	t_printf *tab;
+	t_printf	*tab;
 
 	tab = (t_printf *)malloc(sizeof(t_printf));
 	if (!tab)

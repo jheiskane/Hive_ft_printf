@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/22 08:58:54 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/06/03 15:50:16 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,6 @@ long double	round_nb(long double nb, int preci)
 		x++;
 		d = nb / 10;
 	}
-	if (preci == 0)
-		d = nb;
 	digit = nb - d;
 	if (digit == 0.5 && d % 2 == 0)
 		return (nb - round);

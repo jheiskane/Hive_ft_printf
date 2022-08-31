@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:49:54 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/05/30 15:48:58 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:47:00 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@ void	ini_struct(t_printf *tab)
 	tab->cap_l = 0;
 	tab->l = 0;
 	tab->ll = 0;
+	tab->l = 0;
 	tab->h = 0;
 	tab->error = 0;
 	tab->p_not = 0;

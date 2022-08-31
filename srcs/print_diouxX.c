@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:28:50 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/11 15:15:13 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/30 15:47:47 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,33 +28,40 @@ int	ft_strlen_di(const char *str)
 	return (i + neg);
 }
 
+void	write_n_pad(t_printf *tab, char *s)
+{
+	while (*s && !tab->p_not)
+		tab->b_written += write(1, &*s++, 1);
+	if (tab->width > 0 && tab->dash)
+		align(tab, tab->width, ' ');
+}
+
 void	print_di(t_printf *tab)
 {
 	char	*s;
 	char	*tmp;
 
 	s = ft_itoa_ll(special_cases_di(tab));
+	if (!s)
+		exit(-1);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_not = 1;
-	tab->width -= ft_strlen(s) + ((tab->sign && *s != '-') \
-	|| tab->space) - tab->p_not;
+	tab->width -= ft_strlen(s) + ((tab->sign || tab->space) && *s != '-') \
+	- tab->p_not;
 	tab->preci -= ft_strlen_di(s);
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
+	if (tab->zero && !tab->dot)
+		s = print_signs(tab, s);
 	if (tab->width > 0 && !tab->dash)
-		s = align_di(tab, tab->width, ' ', s);
-	else if (tab->sign && *s != '-' && !tab->dash)
-		tab->b_written += write(1, "+", 1);
-	else if (tab->space && *s != '-' && !tab->dash)
-		tab->b_written += write(1, " ", 1);
+		align(tab, tab->width, ' ');
+	if (!tab->zero || tab->dot)
+		s = print_signs(tab, s);
 	if (tab->preci > 0)
-		s = align_di(tab, tab->preci, '0', s);
-	while (*s && !tab->p_not)
-		tab->b_written += write(1, &*s++, 1);
-	if (tab->width > 0 && tab->dash)
-		s = align_di(tab, tab->width, ' ', s);
-	free (tmp);
+		align(tab, tab->preci, '0');
+	write_n_pad(tab, &*s);
+	free(tmp);
 }
 
 void	print_o(t_printf *tab, int base)
@@ -64,6 +71,8 @@ void	print_o(t_printf *tab, int base)
 
 	s = ft_itoa_ull(special_cases_uox(tab), base);
 	tmp = s;
+	if (!s)
+		exit(-1);
 	if (!tab->preci && *s == '0' && tab->dot && !tab->hash)
 		tab->p_not = 1;
 	tab->preci -= ft_strlen(s);
@@ -72,16 +81,11 @@ void	print_o(t_printf *tab, int base)
 		tab->preci = 1;
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
-	if (tab->width > 0 && !tab->dash && tab->zero)
-		align_di(tab, tab->width, '0', s);
-	else if (tab->width > 0 && !tab->dash)
-		align_di(tab, tab->width, ' ', s);
+	if (tab->width > 0 && !tab->dash)
+		align(tab, tab->width, ' ');
 	if (tab->preci > 0)
-		align_di(tab, tab->preci, '0', s);
-	while (*s && !tab->p_not)
-		tab->b_written += write(1, &*s++, 1);
-	if (tab->width > 0 && tab->dash)
-		align_di(tab, tab->width, ' ', s);
+		align(tab, tab->preci, '0');
+	write_n_pad(tab, &*s);
 	free (tmp);
 }
 
@@ -94,6 +98,8 @@ void	print_u(t_printf *tab)
 		s = ft_itoa_ull(special_cases_uox(tab), 10);
 	else
 		s = ft_itoa_base(special_cases_uox(tab), 10);
+	if (!s)
+		exit(-1);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot && !tab->hash)
 		tab->p_not = 1;
@@ -102,14 +108,11 @@ void	print_u(t_printf *tab)
 	if (tab->preci > 0)
 		tab->width -= tab->preci;
 	if (tab->width > 0 && !tab->dash)
-		align_di(tab, tab->width, ' ', s);
+		align(tab, tab->width, ' ');
 	if (tab->preci > 0)
-		align_di(tab, tab->preci, '0', s);
+		align(tab, tab->preci, '0');
 	if (*s == '-')
 		++(*s);
-	while (*s && !tab->p_not)
-		tab->b_written += write(1, &*s++, 1);
-	if (tab->width > 0 && tab->dash)
-		align_di(tab, tab->width, ' ', s);
+	write_n_pad(tab, &*s);
 	free (tmp);
 }

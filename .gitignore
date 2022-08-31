@@ -1,5 +1,0 @@
-tests/printf_*
-tests/printf.dS*
-tests/printf.dSYM*
-.vscode/
-printf.code-workspace

@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/26 12:38:39 by ishakuro          #+#    #+#             */
-/*   Updated: 2022/03/07 14:00:36 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/24 14:27:03 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,13 +42,15 @@ typedef struct s_printf
 	char	*conversions;
 }			t_printf;
 
+int			check_for_dot(t_printf *tab, char *s);
+char		*print_signs(t_printf *tab, char *s);
 long double	ft_abs(long double nb);
 char		*align_f(t_printf *tab, int len, char c, char *s);
 char		*conv_hash(t_printf *tab, char *str, char f);
 char		*ft_itoa_ull(unsigned long long int nb, int base);
 size_t		special_cases_uox(t_printf *tab);
 void		fill_preci_diouxX(t_printf *tab);
-long		double	special_cases_f(t_printf *tab);
+long double	special_cases_f(t_printf *tab);
 void		print_f(t_printf *tab);
 char		*ft_itoa_float(t_printf *tab, long double nb);
 void		print_u(t_printf *tab);
@@ -75,7 +77,7 @@ char		*ft_itoa_base(size_t nb, int base);
 void		print_p(t_printf *tab);
 char		*align_di(t_printf *tab, int len, char c, char *s);
 int			is_hs_zr(t_printf *tab, const char *str, int i);
-char		*ft_itoa_ll(ssize_t nb);
+char		*ft_itoa_ll(long long int nb);
 void		print_ox_s(t_printf *tab, char f);
 
 #endif

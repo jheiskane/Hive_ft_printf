@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/03/07 13:08:00 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/03/07 13:19:35 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/06 17:34:19 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,16 +14,21 @@
 
 void	handle_hash(t_printf *tab, char *s, char f)
 {
-	if (tab->hash)
+	if (tab->hash && *s != '0')
 	{
-		if (*s != '0' && tab->zero && !tab->dot)
+		if (tab->zero && !tab->dot)
+		{
 			print_ox_s(tab, f);
-		align_di(tab, tab->width - 2, ' ', s);
-		if (*s != '0' && !tab->zero)
+			align(tab, tab->width - 2, ' ');
+		}
+		else
+		{
+			align(tab, tab->width - 2, ' ');
 			print_ox_s(tab, f);
+		}
 	}
 	else
-		align_di(tab, tab->width, ' ', s);
+		align(tab, tab->width, ' ');
 }
 
 void	print_x(t_printf *tab, char *s, char f)
@@ -43,6 +48,8 @@ void	print_xx(t_printf *tab, char f, int base)
 
 	tab->error = 0;
 	s = ft_itoa_ull(special_cases_uox(tab), base);
+	if (!s)
+		exit(-1);
 	tmp = s;
 	if (!tab->preci && *s == '0' && tab->dot)
 		tab->p_not = 1;
@@ -55,9 +62,9 @@ void	print_xx(t_printf *tab, char f, int base)
 	else if (tab->hash && *s != '0')
 		print_ox_s(tab, f);
 	if (tab->preci > 0)
-		align_di(tab, tab->preci, '0', s);
+		align(tab, tab->preci, '0');
 	print_x(tab, s, f);
 	if (tab->width > 0 && tab->dash)
-		align_di(tab, tab->width - (2 * tab->hash), ' ', s);
+		align(tab, tab->width - (2 * tab->hash), ' ');
 	free (tmp);
 }

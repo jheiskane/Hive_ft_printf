@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:17:24 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/04/11 14:37:48 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/05/02 13:23:14 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,11 @@ int	is_width(t_printf *tab, const char *str, int i)
 		while (ft_isdigit(str[i + j]))
 			j++;
 		numb = ft_strnew(j);
+		if (!numb)
+			exit(-1);
 		ft_strncpy(numb, &str[i], j);
 		tab->width = ft_atoi(numb);
-		free (numb);
+		free(numb);
 		return (i + j);
 	}
 	return (i);
@@ -48,6 +50,8 @@ int	calc_preci(t_printf *tab, const char *str, int i)
 		i++;
 	}
 	precision = ft_strsub(str, 0, j);
+	if (!precision)
+		exit (-1);
 	tab->preci = ft_atoi(precision);
 	free(precision);
 	return (i);

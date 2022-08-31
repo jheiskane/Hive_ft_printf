@@ -6,7 +6,7 @@
 /*   By: jheiskan <jheiskan@student.hive.fi>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/02/14 18:48:11 by jheiskan          #+#    #+#             */
-/*   Updated: 2022/08/31 12:48:17 by jheiskan         ###   ########.fr       */
+/*   Updated: 2022/08/31 12:52:27 by jheiskan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ long double	round_nb(long double nb, int preci)
 		d = digit;
 		digit = ft_abs(digit) - ft_abs(d);
 	}
-	if (1.0 - ft_abs(digit) < 0 + ft_abs(digit) || \
-	(d % 2 != 0 && 1.0 - digit == 0 + digit))
-		return (nb + round);
-	return (nb);
+	digit = nb - d;
+	if (digit == 0.5 && d % 2 == 0)
+		return (nb - round);
+	return (nb + round);
 }
 
 char	*save_to_str(long double a_com, int preci)
